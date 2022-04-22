@@ -1,65 +1,27 @@
+var users = [
+    {unit: "O-00-00", password:"123", role:"admin"},
+    {unit: "A-10-13", password:"123", role:"resident"},
+    {unit: "B-10-14", password:"123", role:"resident"},
+]
 
-(function ($) {
-    "use strict";
-
-
-    /*==================================================================
-    [ Validate ]*/
-    var input = $('.validate-input .input100');
-
-    $('.validate-form').on('submit',function(){
-        var check = true;
-        
-        for(var i=0; i<input.length; i++) {
-            if(validate(input[i]) == false){
-                showValidate(input[i]);
-                check=false;
-            }
-        }
-
-        return check;
-    });
-
-    $('.validate-form .input100').each(function(){
-        $(this).focus(function(){
-           hideValidate(this);
-        });
-    });
-
-    function validate (input) {
-        if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-            if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-                return false;
-            }
-        }
-        else {
-            if($(input).val().trim() == ''){
-                return false;
+$('.login-form').submit(function(e){
+    input_unit= $('.login-form input[id="unit"]').val();
+    input_pass= $('.login-form input[id="password"]').val();
+    input_role= $('#role').val();
+    var success = false;
+    for(user of users){
+        if(input_unit===user.unit && input_pass===user.password && input_role===user.role){
+            success = true
+            if(input_role === "admin"){
+                window.location.replace("admin-dashboard.html"); //admin dashboard
+            }else{
+                window.location.replace("dashboard.html"); //resident dashboard
             }
         }
     }
-
-    function showValidate(input) {
-        var thisAlert = $(input).parent();
-
-        $(thisAlert).addClass('alert-validate');
+    if(success===false){
+        alert("Unit/Password/Credidential does not match. Try again.")
     }
-
-    function hideValidate(input) {
-        var thisAlert = $(input).parent();
-
-        $(thisAlert).removeClass('alert-validate');
-    }
+    e.preventDefault();
+})
     
-})(jQuery);
-
-// Temp Code to redirect them to resident or admin page
-function signIn(){
-    var signInType = $('.select :selected').val()
-
-    if(signInType=="resident"){
-        window.location.href = "dashboard.html"
-    }else if(signInType=="admin"){
-        window.location.href = "admin-dashboard.html"
-    }
-}
