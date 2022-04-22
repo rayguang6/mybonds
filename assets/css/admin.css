@@ -51,6 +51,29 @@ a:hover{
     color: #183B68;
 }
 
+/* Scroll Bar */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #0d6efd; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(13, 110, 253, 0.75);
+}
+
 
 /********************
 Global Theme End 
@@ -193,3 +216,36 @@ Main Content Continer (inside right container below the topbar)
 /********************
 Main Content Container End 
 ********************/
+
+
+/********************
+Datatable Start (Manage Covid and User) 
+********************/
+
+#UserTableBody tr,
+#RequestTableBody tr,
+#report_table tr
+:hover{
+    cursor: pointer;
+}
+
+/* To Style the datatable pagination button */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: #0d6efd !important;
+    color: white !important;
+    border:#0d6efd !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,.paginate_button:hover{
+    opacity: 0.9;
+    background: #0d6efd !important;
+    color: white !important;
+    border:#0d6efd !important;
+}
+
+
+/********************
+Manage User End
+********************/
+
+
+
