@@ -1,0 +1,334 @@
+
+//call this function when window load
+$(document).ready(function () {
+    buildMaintenanceContent('#MaintenanceTableBody')
+    buildRequestContent('#RequestTableBody')
+
+    buildTable('#MaintenanceTable')
+    buildTable('#RequestTable')
+})
+
+// Resident Request Data List
+var requests = [
+    { location: "A-11-11", name: "Loh", contact: "012-4358723",  date: "2022-04-19T13:00", details: "Wiring repairment", description: "weird sounds when turning on lights" },
+    { location: "D-10-09", name: "Loo Ming Ming", contact: "018-4379713", date: "2022-04-18T13:21", details: "Pipe repairment", description: "leakage of water in kitchen" },
+]
+
+// Schedule Data List
+var schedules = [
+    { location: "A-03-S1", type: "facility", company: "Jojo Sdn Bhd", contact: "016-2394546", date: "2022-04-27T13:00", details: "Maintenance", description: "swimming pool monthly cleaning", status: "ongoing" },
+    { location: "A-03-G1", type: "facility", company: "Koi Sdn Bhd", contact: "04-9327546", date: "2022-04-27T13:00", details: "Maintenance", description: "gym facilities maintenance", status: "ongoing" },
+    { location: "B-03-G2", type: "facility", company: "Koi Sdn Bhd", contact: "04-9327546", date: "2022-04-29T13:00", details: "Maintenance", description: "gym facilities maintenance", status: "reserved" }
+]
+
+function buildTable(tableID) {
+    //initialize datatable
+    $(tableID).DataTable({
+        // "scrollX": "100%", 这个我用了我的table不align去 我改成下面这个就ok了
+        "initComplete": function (settings, json) {
+            $(tableID).wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
+        },
+        "scrollCollapse": true,
+        language: {
+            paginate: {
+                next: '<i class="fa fa-angle-double-right" aria-hidden="true"></i>',
+                previous: '<i class="fa fa-angle-double-left" aria-hidden="true"></i>'
+            }
+        }
+    })
+}
+
+function rebuildTable(tableID) {
+    $(tableID).DataTable().destroy();
+    console.log(tableID)
+    if (tableID === '#MaintenanceTable') {
+        buildMaintenanceContent('#MaintenanceTableBody')
+    } else {
+        buildRequestContent('#RequestTableBody')
+    }
+    buildTable(tableID)
+}
+
+
+function buildMaintenanceContent(tableBody) {
+    $(tableBody).empty() //clear the html first
+    console.log(schedules.length)
+    var index = 1;
+    for (schedule of schedules) {
+        //用template literal (``) 来一次过include所有html 和 string. 用${} 来写 variable
+        newRow =
+            `<tr onclick="editRow('${schedule.location}','${schedules}')">
+                <td> ${index} </td>
+                <td> ${schedule.location} </td>
+                <td> ${schedule.type} </td>
+                <td> ${schedule.contact} </td>
+                <td> ${schedule.date} </td>                    
+                <td> ${schedule.details} </td>
+                <td> ${getBadge(schedule.status)} </td>
+                <td>
+                <button type="button" class="btn" onclick="editRow('${schedule.location}','${schedules}')"><i class="bi bi-pencil-square text-primary"></i></button>
+                <button type="button" class="btn" onclick="deleteSchedule('${schedule.location}')"><i class="bi bi-trash3 text-danger"></i></button>
+                </td>
+            </tr>
+            `
+        $(tableBody).append(newRow)
+        index++;
+    }
+}
+
+function getBadge(status) {
+    switch(status){
+        //warning
+        case "reserved":
+            return `<span class="badge rounded-pill bg-opacity-75 bg-warning">${status}</span>`
+        //danger
+        case "ongoing":
+            return `<span class="badge rounded-pill bg-opacity-75 bg-danger">${status}</span>`
+        //success
+        case "completed":
+            return `<span class="badge rounded-pill bg-opacity-75 bg-success">${status}</span>`
+    }
+}
+
+
+function buildRequestContent(tableBody) {
+    $(tableBody).empty() //clear the html first
+    console.log(requests.length)
+    for (request of requests) {
+        //用template literal (``) 来一次过include所有html 和 string. 用${} 来写 variable
+        newRow =
+            `<tr onclick="approveRequest('${request.location}')">
+                <td> ${request.location} </td>
+                <td> ${request.name} </td>
+                <td> ${request.contact} </td>
+                <td> ${request.date} </td>
+                <td> ${request.details} </td>                   
+                <td><button type="button" class="btn" onclick="approveRequest('${request.location}')"><i class="bi bi-check-square text-primary"></i></button>
+                <button type="button" class="btn" onclick="rejectRequest('${request.location}')"><i class="bi bi-x-octagon-fill text-danger"></i></i></button>
+                </td>
+            </tr>
+            `
+        $(tableBody).append(newRow)
+    }
+}
+
+function buildModal() {
+    console.log("building modal...")
+    $('#ModalBody').empty() //clear the html first
+    newBody =
+        `<form id="form">
+        <div class="mb-3">
+            <label for="location" class="col-form-label">Location:</label>
+            <input type="text" class="form-control" id="location" pattern="[A-Z]{1}-[0-9]{2}-[0-9a-zA-Z]{2}" placeholder="X-XX-XX" required>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="col-form-label">Type:</label>
+            <select class="select" id="type">
+                <option value="facility">Facility</option>
+                <option value="unit">Unit</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="col-form-label">Details:</label>
+            <select class="select" id="details" reuqired>
+                <option value="Pipe repairment">Pipe repairment</option>
+                <option value="Wiring repairment">Wiring repairment</option>
+                <option value="Maintenance">Maintenance</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="col-form-label">Description: </label>
+            <textarea class="form-control" id="description" rows="3" cols="30"></textarea>
+        </div>
+        </div>
+            <div class="mb-3">
+            <label for="date-scheduled" class="col-form-label">Date Scheduled:</label>
+            <input type="datetime-local" class="form-control" id="date-scheduled" required>
+        </div>
+        <div class="mb-3">
+            <label for="company" class="col-form-label">Company:</label>
+            <input type="text" class="form-control" id="company" required>
+        </div>
+        <div class="mb-3">
+            <label for="contact" class="col-form-label">Company Contact Number:</label>
+            <input type="text" class="form-control" id="contact" required>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="col-form-label">Status:</label>
+            <select class="select" id="status" reuqired>
+                <option value="reserved">Reserved</option>
+                <option value="ongoing">Ongoing</option>
+                <option value="completed">Completed</option>
+            </select>
+        </div>
+        <input type="submit"  class="me-lg-3 btn btn-primary" id="submit">
+    </form> `
+    $('#ModalBody').append(newBody)
+}
+
+function editRowDisplay(location, arrays) {
+    console.log(arrays)
+    for (array of arrays) {
+        if (array.location === location) {
+            console.log("editRowDisplay called : "+array.location)
+            $('#Modal input[id="location"]').val(array.location)
+            $('#Modal input[id="location"]').prop("disabled", true)
+            $('#Modal input[id="date-scheduled"]').val(array.date)
+            $('#Modal select[id="type"]').prop("disabled", true)
+            $('#Modal select[id="details"]').val(array.details)
+            $('#Modal select[id="details"]').prop("disabled", true)
+            $('#Modal textarea[id="description"]').val(array.description)
+            $('#Modal textarea[id="description"]').prop("disabled", true)
+            if (arrays === requests) {
+                $('#Modal select[id="type"]').val("unit") 
+            } else {
+                $('#Modal select[id="type"]').val(array.type)
+                $('#Modal input[id="company"]').val(array.company)
+                $('#Modal input[id="contact"]').val(array.contact)
+                $('#Modal select[id="status"]').val(array.status)
+            }
+        }
+    }
+}
+
+function editRow(location) {
+    event.stopPropagation();
+
+    //building and showing modal
+    buildModal();
+    $('#Modal').on('show.bs.modal', function () {
+        $('#AddModalLabel').text('Update Facility Work: ');
+    });
+    $('#Modal').modal('show');
+
+    //show 本来的value
+    console.log("EDIT ROW called")
+    editRowDisplay(location, schedules);
+
+    $("#form").submit(function (e) {
+        console.log("editRow called")
+        updateResident(location)
+        e.preventDefault();
+    })
+}
+
+function updateResident(location) {
+    var date = $('#Modal input[id="date-scheduled"]').val();
+    var company = $('#Modal input[id="company"]').val()
+    var contact = $('#Modal input[id="contact"]').val()
+    var status = $('#Modal select[id="status"]').val();
+    
+    for (schedule of schedules) {
+
+        if (schedule.location === location) {
+            schedule.date = date,
+            schedule.company = company,
+            schedule.contact = contact,
+            schedule.status = status
+
+            alert("updated!");
+
+            rebuildTable('#MaintenanceTable')
+        }
+    }
+}
+
+function addSchedule() {
+    console.log("ADDSCHEDULE called")
+
+    //building and showing modal
+    buildModal();
+    $('#Modal').on('show.bs.modal', function () {
+        $('#AddModalLabel').text('Add New Facility Work: : ');
+    });
+
+    $('#Modal').modal('show');
+    addRow();
+
+    $("#form").submit(function (e) {
+        $("#form").trigger("reset");
+    })
+}
+
+function deleteSchedule(location) {
+    event.stopPropagation();
+    if (confirm(`Cancel schedule for : ${location}?`)) {
+        deleteRow(location, schedules, '#MaintenanceTable')
+    }
+}
+
+function rejectRequest(location) {
+    event.stopPropagation();
+    if (confirm(`Reject request for : ${location}?`)) {
+        deleteRow(location, requests, '#RequestTable')
+    }
+}
+
+function approveRequest(location) {
+    event.stopPropagation();
+    console.log("APPROVE called")
+    //building and showing modal
+    buildModal();
+    $('#Modal').on('show.bs.modal', function () {
+        $('#AddModalLabel').text('Assign Facility Work: ');
+    });
+    $('#Modal').modal('show');
+
+    //show 本来的value
+    console.log(requests)
+    editRowDisplay(location, requests)
+    
+    addRow()
+    $("#form").submit(function (e) {
+        deleteRow(location, requests, '#RequestTable')
+    })
+}
+
+function deleteRow(location, array, tableID) {
+    event.stopPropagation();//stop the propagation (按了editbuton后，不会再trigger Row 的onclick)
+    console.log(array);
+    array.forEach(function (object, index) {
+        console.log('index:' + index + ' resident' + object.location);
+        if (object.location === location) {
+            array.splice(index, 1); //remove the object from array
+            rebuildTable(tableID)
+        }
+    });
+}
+
+function addRow() {
+    console.log("addRow called")
+    // Submit Form
+    $("#form").submit(function (e) {
+        var newSchedule = {}
+
+        var location = $('#Modal input[id="location"]').val()
+        var type = $('#Modal select[id="type"]').val() //?
+        var company = $('#Modal input[id="company"]').val()
+        var contact = $('#Modal input[id="contact"]').val()
+        var details = $('#details').val() //?
+        var description = $('#Modal textarea[id="description"]').val(); //?
+        var status = $('#Modal select[id="status"]').val();
+        var date = $('#Modal input[id="date-scheduled"]').val()
+
+        newSchedule = {
+            location: location,
+            type: type,
+            company: company,
+            contact: contact,
+            date: date,
+            details: details,
+            description: description,
+            status: status
+        }
+
+        //insert into main list
+        schedules.push(newSchedule)
+        //call build row
+        rebuildTable('#MaintenanceTable')
+
+        e.preventDefault();
+
+        return true;
+    })
+}
