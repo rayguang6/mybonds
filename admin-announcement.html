@@ -29,7 +29,7 @@
             <div class="col-auto col-md-3 col-lg-3 col-xl-2 px-sm-2 py-4 pe-4 bg-white" id="sidebar">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     <!-- Logo Area -->
-                    <a id="logo" href="admin-announcement.html" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none">
+                    <a id="logo" href="admin-dashboard.html" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none">
                         <span class="fs-5 d-none d-sm-inline"><img src="assets/images/admin.png" alt="Bonds Logo" width="150"></span>
                         <span class="fs-5 d-sm-none"><img src="assets/images/admin-favicon.png" alt="Bonds Logo" width="30"></span>
                     </a>
@@ -37,28 +37,29 @@
                     <!-- Menu Start -->
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mt-4" id="menu">
                         <li class="nav-item mt-2">
-                            <a href="admin-announcement.html" class="nav-link active">
+                            <a href="admin-dashboard.html" class="nav-link active menu_a">
                                 <i class="fs-5 bi bi-house"></i> <span class="fs-6 ms-1 d-none d-sm-inline">Dashboard</span>
                             </a>
                         </li>
-            
+                        
                         <li class="nav-item mt-2">
-                            <a href="admin-manageuser.html" class="nav-link">
+                            <a href="admin-manageuser.html" class="nav-link menu_a">
                                 <i class="fs-5 bi bi-people"></i><span class="fs-6 ms-1 d-none d-sm-inline">Manage User</span>
                             </a>
                         </li>
+
                         <li class="nav-item mt-2">
-                            <a href="admin-managecovid.html" class="nav-link">
+                            <a href="admin-managecovid.html" class="nav-link menu_a">
                                 <i class="fs-5 bi bi-shield-plus"></i><span class="fs-6 ms-1 d-none d-sm-inline">Covid 19</span>
                             </a>
                         </li>
             
                         <li class="nav-item mt-2">
-                            <a href="admin-maintenance.html" class="nav-link active">
-                                <i class="fs-5 bi bi-person-bounding-box"></i><span class="fs-6 ms-1 d-none d-sm-inline">Maintenance</span>
+                            <a href="admin-maintenance.html" class="nav-link menu_a">
+                                <i class="fs-5 bi bi-compass"></i><span class="fs-6 ms-1 d-none d-sm-inline">Maintenance</span>
                             </a>
                         </li>
-                        
+
                     </ul>
                     <!-- Menu End -->
                     <hr>
@@ -97,6 +98,7 @@
                 </div>
             </div>
 
+
             <!--////////////////////
                 Sidebar End
             ////////////////////-->
@@ -114,7 +116,7 @@
                     <nav class="navbar navbar-expand-lg navbar-light mt-3" id="topbar">
                       <div class="container-fluid">
                         <!-- Page Title -->
-                        <h2 class="navbar-brand fw-bolder fs-2 mydarkblue" id="page_title">Bonds App</h2>
+                        <h2 class="navbar-brand fw-bolder fs-2 mydarkgreen" id="page_title">Bonds Admin</h2>
                   
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -125,43 +127,43 @@
                                 <!-- chat icon -->
                                 <li class="nav-item dropdown">
                   
-                                    <a class="nav-link" href="#" id="notification-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="myblue bi bi-chat-dots-fill fs-3"></i>
+                                    <a title="Messages" class="nav-link" href="#" id="notification-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="mygreen bi bi-chat-dots-fill fs-3"></i>
                                       </a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notification-dropdown">
-                                      <li><a class="dropdown-item" href="#"><img src="assets/images/profile-image.png" width="30" alt="">I Love You</a><hr class="dropdown-divider"></li>                    
-                                      <li><a class="dropdown-item" href="#"><img src="assets/images/profile-image.png" width="30" alt="">I Hate You</a><hr class="dropdown-divider"></li>                    
-                                      <li><a class="dropdown-item" href="#"><img src="assets/images/profile-image.png" width="30" alt="">I Want You</a><hr class="dropdown-divider"></li>                    
+                                      <li><a class="dropdown-item" href="#"><img class="rounded-circle" src="assets/images/profile-image.png" width="30" alt="">I Love You</a><hr class="dropdown-divider"></li>                    
+                                      <li><a class="dropdown-item" href="#"><img class="rounded-circle" src="assets/images/profile-image.png" width="30" alt="">I Hate You</a><hr class="dropdown-divider"></li>                    
+                                      <li><a class="dropdown-item" href="#"><img class="rounded-circle" src="assets/images/profile-image.png" width="30" alt="">I Want You</a><hr class="dropdown-divider"></li>                    
+                                      <!-- <li><hr class="dropdown-divider"></li> -->
+                                      <li><a class="dropdown-item text-center mygreen" href="chat.html">View All Chats</a></li>
                                     </ul>
                                 </li>
                                 <!-- chat icon end -->
                                 <li class="nav-item dropdown">
                   
-                                    <a class="nav-link" href="#" id="notification-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="myblue bi bi-megaphone-fill fs-3"></i>
+                                    <a title="Announcements" class="nav-link" href="#" id="notification-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="mygreen bi bi-megaphone-fill fs-3"></i>
                                       </a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notification-dropdown">
-                                      <li><a class="dropdown-item" href="#">Ray Have Made and Announcement</a></li>
-                                      <li><a class="dropdown-item" href="#">Basketball Competition 8pm</a></li>
+                                      <li><a class="dropdown-item" href="#">Admin Have Made an Announcement</a></li>
+                                      
                                       <li><hr class="dropdown-divider"></li>
-                                      <li><a class="dropdown-item" href="#">View All Announcements</a></li>
+                                      <li><a class="dropdown-item" href="#">Basketball Competition 6pm</a></li>
+                                      <li><hr class="dropdown-divider"></li>
+                                      <li><a class="dropdown-item" href="#">Electric Cutoff 8-10pm</a></li>
+                                      <li><hr class="dropdown-divider"></li>
+                                      <li><a class="dropdown-item text-center mygreen" href="admin-announcement.html">View All Announcements</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
                   
-                                    <a class="nav-link" href="#" id="notification-dropdown " role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="myblue bi bi-calendar-check-fill fs-3"></i>
-                                      </a>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notification-dropdown">
-                                      <li><a class="dropdown-item" href="#">View Calendar</a></li>
-                                      <li><a class="dropdown-item" href="#">Bonds Upcoming Activities</a></li>
-                                      <li><hr class="dropdown-divider"></li>
-                                      <li><a class="dropdown-item" href="#">See All Activities</a></li>
-                                    </ul>
+                                    <a title="Make Report" class="nav-link" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <i class="mygreen bi bi-exclamation-diamond-fill fs-3"></i>
+                                    </a>
                                 </li>
                                 
                             </ul>      
-                            <button class="me-lg-3 btn btn-primary"><i class="bi bi-question-circle me-1"></i>Get Help</button>
+                            <button label="Get Suppport" class="me-lg-3 btn btn_mygreen"><i class="bi bi-question-circle me-1"></i>Get Help</button>
                             
                   </span>
                       </div>
@@ -173,12 +175,12 @@
                      Top Bar End
                 ////////////////////-->
 
-<!-- Container Under Right Container -->
-<div class="container main_content_container">
-<div class="row">
-                    <!-- ***************************************************************
+            <!-- Container Under Right Container -->
+            <div class="container main_content_container">
+                <div class="row">
+
+                <!-- ***************************************************************
                                      PUT YOUR CONTENT BELOW 
-                        (Start With A Responsive Col, with .mycontainer class)
                  *******************************************************************-->
                  
 <div class="col-12 col-lg-8 mx-lg-auto">
@@ -205,7 +207,7 @@
 
 
 <!-- ### CHANGE the innner text TO CHANGE THE TOPBAR TITLE --><script>$("#page_title").text("Announcements")</script>
-<!-- ### CHANGE the innner text TO CHANGE THE TITLE --><script>$("title").text("Bonds | Announcements")</script>
+<!-- ### CHANGE the innner text TO CHANGE THE TITLE --><script>$("title").text("Admin | Announcements")</script>
 <!-- (Included In This file Only)Manage Covid JS --><script src="assets/js/announcement.js"></script>
 
                 <!-- ***************************************************************

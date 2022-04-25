@@ -13,9 +13,9 @@ $('.login-form').submit(function(e){
         if(input_id===user.id && input_pass===user.password && input_role===user.role){
             success = true
             if(input_role === "admin"){
-                window.location.replace("admin-announcement.html"); //admin dashboard
+                window.location.replace("admin-dashboard.html"); //admin dashboard
             }else{
-                window.location.replace("announcement.html"); //resident dashboard
+                window.location.replace("dashboard.html"); //resident dashboard
             }
         }
     }

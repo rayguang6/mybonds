@@ -1,6 +1,6 @@
 // To let admin to manage announcement and display it to residents
 
-var posts=[
+var announcements=[
 {
     announcementId:1,
     title:"My First Announcement has long title",
@@ -32,7 +32,7 @@ var posts=[
     announcementId:4,
     title:"Another Announcement",
     content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla. Magnam, tenetur quae nemo nobis cumque, corrupti dolores totam qui consequatur iusto quibusdam? Neque, ratione eius, sit officiis laborum sequi repudiandae mollitia blanditiis inventore maiores est ullam quasi deleniti itaque modi, aspernatur pariatur hic! Perferendis quaerat exercitationem incidunt. Reprehenderit, dolor!",
-    image:"assets/images/redident.png",
+    image:"assets/images/resident.png",
     target:['Block C','Block D'],
     time:'25 Apr 2022, 5:23 am'
 },
@@ -40,13 +40,13 @@ var posts=[
 ]
 
     $(document).ready(function(){
-        displayPosts()
+        displayAnnouncements()
     })
 
-    function displayPosts(){
+    function displayAnnouncements(){
         $('#announcement_container').empty()
 
-        for (announcement of posts.reverse()){
+        for (announcement of announcements.reverse()){
                 var card = `<div class="card mt-4 mycontainer">
                         <div class="card-body">
                             ${getTag(announcement.target)}
@@ -58,7 +58,7 @@ var posts=[
                         </div>`
                 $('#announcement_container').append(card)
             }
-        posts.reverse()
+        announcements.reverse()
     }
 
     function getTag(array){
@@ -91,7 +91,7 @@ var posts=[
     }
 
 
-    function submitPost(){
+    function submitAnnouncement(){
 
         let title = document.getElementById("title").value;
         let content = document.getElementById("content").value;
@@ -105,11 +105,11 @@ var posts=[
                 target:[],
                 time: new Date().toLocaleDateString('en-uk', { year:"numeric", month:"short", day:"numeric",hour:"numeric", minute:"numeric", hour12: true})
             }
-            posts.push(announcement)
+            announcements.push(announcement)
         }
         $('#title').val('')
         $('#content').val('')
-        displayPosts()
+        displayAnnouncements()
     }
 
     // Filter Function
@@ -118,7 +118,7 @@ var posts=[
         $('#block-span').text(block)
 
         $('#announcement_container').empty()
-        for (announcement of posts.reverse()){
+        for (announcement of announcements.reverse()){
             var blocks = announcement.target
             if(blocks.includes(block)){
                 var card = `<div class="card mt-4 mycontainer">
@@ -133,7 +133,7 @@ var posts=[
                 $('#announcement_container').append(card)
             }
         }
-        posts.reverse()
+        announcements.reverse()
         toggleActive(block)
     }
 
@@ -155,7 +155,7 @@ var posts=[
         // toggle active
         if(currentActive){
             // then cancel filter
-            displayPosts()
+            displayAnnouncements()
             $('#block-span').text('All Blocks')
             elem.classList.remove('btn_mygreen');
           } else {

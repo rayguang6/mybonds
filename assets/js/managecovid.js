@@ -22,7 +22,7 @@ var residents = [
         name: "Lei Zhi Guang",
         age: 18,
         vaccine: "First Dose",
-        covid: "Low Risk",
+        covid: "Negative",
         updated: "1 Apr, 11:11",
         contact: "013-6247251",
     },
@@ -49,7 +49,7 @@ var residents = [
         name: "Thunder Light ",
         age: 35,
         vaccine: "Booster 1",
-        covid: "Low Risk",
+        covid: "Negative",
         updated: "17 Apr, 06:02",
         contact: "019-6521805",
     },
@@ -93,7 +93,7 @@ var reports =  [
         name: "Mr Suddenly",
         type: "covid",
         image: "https://cdn.pixabay.com/photo/2022/02/15/05/53/covid-19-7014303_1280.jpg",
-        status:"Low Risk",
+        status:"Negative",
         description:"-",
         date: "21/04/2022, 00:16",
     },
@@ -176,7 +176,7 @@ var reports =  [
     function getSelectInput(type){
         if(type==="covid"){
             return `
-            <option value="Low Risk">Low Risk</option>
+            <option value="Negative">Negative</option>
             <option value="Close Contact">Close Contact</option>
             <option value="Positive">Positive</option>
             `
@@ -349,7 +349,7 @@ var reports =  [
     function getBadge(status) {
         switch(status){
             //success
-            case "Low Risk":
+            case "Negative":
             case "Second Dose":
                 return `<span class="badge rounded-pill bg-opacity-75 bg-success">${status}</span>`
             //warning
