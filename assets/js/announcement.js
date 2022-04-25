@@ -33,7 +33,7 @@ var announcements=[
     title:"Another Announcement",
     content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla. Magnam, tenetur quae nemo nobis cumque, corrupti dolores totam qui consequatur iusto quibusdam? Neque, ratione eius, sit officiis laborum sequi repudiandae mollitia blanditiis inventore maiores est ullam quasi deleniti itaque modi, aspernatur pariatur hic! Perferendis quaerat exercitationem incidunt. Reprehenderit, dolor!",
     image:"assets/images/redident.png",
-    target:['Block A','Block B','Block C','Block D'],
+    target:['Block A','Block C','Block D'],
     time:'25 Apr 2022, 5:23 am'
 },
     
