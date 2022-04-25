@@ -16,4 +16,5 @@ And if you have any cdn to add you can just add it and inform later
 And we haven't setup the github collab flow. So for the frontend we just code ourself and send to leader who will compile it later.
 
 After week 8, we might work on github and to develop a feature, pull from master branch and create a feature branch. After coding, commit it and make a pull request. 
-
+ Hello testing testing
+ 
