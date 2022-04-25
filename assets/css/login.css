@@ -425,50 +425,25 @@ select {
 /*Checkbox-----------------------------------------------
 */
 
-input[type="checkbox"] {
-  appearance: none;
-  background-color: #fff;
-  margin: 0;
-
-  font: inherit;
-  color: currentColor;
-  width: 15px;
-  height: 15px;
-  border: 2px solid #333333;
-  border-radius: 2px;
-  transform: translateY(-1px);
-  display: grid;
-  place-content: center;
+.checkbox {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #46CDCF;
 }
 
-input[type="checkbox"]::before{
-  content: "";
-  width: 10px;
-  height: 10px;
-  transform: scale(0);
-  transition: 100ms ease-in-out;
-  transform-origin: bottom left;
-  box-shadow: inset 15px 15px #3D84A8;
-  background-color: #46CDCF;
-  clip-path: polygon(0 31%, 39% 100%, 100% 0, 75% 0, 35% 63%, 18% 31%);
-}
-
-input[type="checkbox"]:checked::before {
-  transform: scale(1);
-}
-
-input[type="checkbox"]:focus {
-  outline: max(2px, 2px) solid #333333;
-  outline-offset: max(2px, 2px);
-}
-
-label {
-  display: grid;
-  padding-left: 10px;
-  text-indent: 10px;
-  font-size: 15px;
-  line-height: 1;
-  grid-template-columns: 10px auto;
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 
