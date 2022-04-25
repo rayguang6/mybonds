@@ -18,7 +18,7 @@
                     <!-- Menu Start -->
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mt-4" id="menu">
                         <li class="nav-item mt-2">
-                            <a href="dashboard.html" class="nav-link active">
+                            <a href="maintenance.html" class="nav-link active">
                                 <i class="fs-5 bi bi-house"></i> <span class="fs-6 ms-1 d-none d-sm-inline">Dashboard</span>
                             </a>
                         </li>
@@ -126,7 +126,7 @@
                                 <li class="nav-item dropdown">
                   
                                     <a class="nav-link" href="#" id="notification-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="mygreen bi bi-bell-fill fs-3"></i>
+                                        <i class="mygreen bi bi-megaphone-fill fs-3"></i>
                                       </a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notification-dropdown">
                                       <li><a class="dropdown-item" href="#">Ray Have Made and Announcement</a></li>

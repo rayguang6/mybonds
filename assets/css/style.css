@@ -40,8 +40,8 @@ body {
   color: #fff;
   background-color: #46cdcf;
   border-color: #46cdcf;
-  transition: 0.25s;
-  transform: translateY(-0.25em);
+  /* transition: 0.25s;
+  transform: translateY(-0.25em); */
 }
 
 a {

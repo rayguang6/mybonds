@@ -334,6 +334,7 @@ var reports =  [
         for(myhistory of editHistories.reverse()){
             $('#history_container').append(myhistory)
         }
+        editHistories.reverse()//reverse back the list
     }
 
     function getColor(text){
