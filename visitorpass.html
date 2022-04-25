@@ -178,7 +178,7 @@
                 <div class="row">
 
 
-                <!-- ***************************************************************
+               <!-- ***************************************************************
                                      PUT YOUR CONTENT BELOW 
                         (Start With A Responsive Col, with .mycontainer class)
                  *******************************************************************-->
@@ -187,11 +187,15 @@
         <h2>Register a Visitor Pass</h2>
         <h6 class="mb-3 text-black-50">For visit in group at the same time slot, only one representative is required to register.</h6>
         
+<!-- switch disabled due to "unoptimized database" -->
+<!-- visitorscript.js disabled -->
         <!-- switch to control form for resident or outsider -->
+<!--
         <div class="mb-3 form-check form-switch">
             <input class="form-check-input visitorSwitch" type="checkbox" role="switch" id="flexSwitchCheckDefault">
             <label class="form-check-label" for="flexSwitchCheckDefault">The visitor(s)<span class="fw-bold text-danger visitorSwitchLabel"> is NOT</span> a resident(s) of <img src="assets/images/resident.png" alt="Bonds Logo" width="75">.</label>
         </div>
+-->
 
         <form action="visitorpass.php" method="POST" class="visitorForm">
             <!-- visitor details -->
@@ -202,11 +206,11 @@
             </div>
             <div class="mb-3 visitorIC">
                 <label for="visitorname" class="form-label">Visitor IC Number</label>
-                <input type="text" class="form-control w-50" id="visitoric" placeholder="e.g 980605037488 (without '-')">
+                <input type="text" class="form-control w-50" id="visitoric" placeholder="e.g 980605-03-7488 (with '-')">
             </div>
             <div class="mb-3 visitorPhone">
                 <label for="visitorphone" class="form-label">Visitor Phone</label>
-                <input type="text" class="form-control w-50" id="visitorphone" placeholder="e.g 0123456789 (without '-')">
+                <input type="text" class="form-control w-50" id="visitorphone" placeholder="e.g 012-3456789 (with '-')">
             </div>
             
             <!-- switch option visitorType -->
@@ -221,7 +225,9 @@
             </div>
 
             <!-- residentForm -->
+<!--
             <div class="mb-3 visitorAddress">
+-->
             <!--
                 <p for="visitoraddress" class="form-label">Visitor Address at <img src="assets/images/resident.png" alt="Bonds Logo" width="75"></p>
                 <div class="container">
@@ -244,9 +250,12 @@
                     </div>
                 </div>
             -->
-            </div><br><br>
+<!--
+            </div>
+-->
             <!-- end of visitorType switch option -->
-            
+            <br><br>
+
             <!-- Visitation details -->
             <h4>Visitation Details</h4>
             <h6 class="mt-4">Expected Visit Time</h6>
@@ -302,7 +311,7 @@
                         <img src="https://cdn.dribbble.com/users/251873/screenshots/9289747/13540-sign-for-success-alert.gif" alt="success-image" width="200">
                     </div>
                     <div class="alert alert-primary" role="alert">
-                        Submitted Successfully, please wait for admin to review it! 
+                        Submitted Successfully! Report will be generated!
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -321,11 +330,10 @@
                 <tr>
                 <th scope="col">Date</th>
                 <th scope="col">Visitor Name</th>
-                <th scope="col">Visiting Address</th>
+                <th scope="col">Car Registration Number</th>
                 <th scope="col">No. of Visitors</th>
                 <th scope="col">Start</th>
                 <th scope="col">End</th>
-                <th scope="col">Status</th>
                 <th scope="col"></th>
                 </tr>
             </thead>
@@ -333,31 +341,28 @@
                 <tr>
                     <td>4 April 2022</td>
                     <td>Mr Suddenly</td>
-                    <td>Block A Floor 2 Unit 1</td>
+                    <td>PNG6779</td>
                     <td>5</td>
                     <td>1000</td>
                     <td>1100</td>
-                    <td><span class="badge rounded-pill bg-success opacity-75">Approved</span></td>
                     <td><i class="ms-1 fa fa-download" aria-hidden="true"></i><i class="ms-1 fa fa-eye" aria-hidden="true"></i></td>
                 </tr>
                 <tr>
                     <td>3 April 2022</td>
                     <td>Mr Handsome</td>
-                    <td>Block D Floor 5 Unit 12</td>
-                    <td>10</td>
+                    <td>WAE322</td>
+                    <td>1</td>
                     <td>1500</td>
                     <td>1600</td>
-                    <td><span class="badge rounded-pill bg-danger opacity-75">Rejected</span></td>
                     <td><i class="ms-1 fa fa-download" aria-hidden="true"></i><i class="ms-1 fa fa-eye" aria-hidden="true"></i></td>
                 </tr>
                 <tr>
                     <td>1 April 2022</td>
                     <td>Ms May</td>
-                    <td>Block C Floor 13 Unit 8</td>
+                    <td>KKT9937</td>
                     <td>3</td>
                     <td>1200</td>
                     <td>1300</td>
-                    <td><span class="badge rounded-pill bg-success opacity-75">Approved</span></td>
                     <td><i class="ms-1 fa fa-download" aria-hidden="true"></i><i class="ms-1 fa fa-eye" aria-hidden="true"></i></td>
                 </tr>
             </tbody>
@@ -366,7 +371,7 @@
 
 <!-- ### CHANGE the innner text TO CHANGE THE TOPBAR TITLE --><script>$("#page_title").text("Visitor Pass")</script>
 <!-- ### CHANGE the innner text TO CHANGE THE TITLE --><script>$("title").text("Bonds | Visitor Pass")</script>
-<!-- (Included In This file Only)Visitor JS --><script src="assets/js/visitorscript.js"></script>
+<!-- (Included In This file Only)Visitor JS --><!--<script src="assets/js/visitorscript.js"></script>-->
 
                 <!-- ***************************************************************
                                         PUT YOUR CONTENT ABOVE
