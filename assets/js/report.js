@@ -1,4 +1,4 @@
-function buildForm() {
+function buildReportForm() {
     console.log("building modal...")
     $('#ModalBody').empty() //clear the html first
     newBody =
@@ -25,7 +25,7 @@ function buildForm() {
     $('#ModalBody').append(newBody)
 }
 
-function submit() {
+function submitReportForm() {
     console.log("SUBMIT called")
 
     //building and showing modal

@@ -1,6 +1,6 @@
 // To let admin to manage announcement and display it to residents
 
-var announcements=[
+var posts=[
 {
     announcementId:1,
     title:"My First Announcement has long title",
@@ -8,7 +8,7 @@ var announcements=[
     With Hello Line Break
     and 3rd line`,
     image:"",
-    target:['Block A','Block B','Block C','Block D'],
+    target:['Block B','Block C'],
     time: '24 Apr 2022, 6:23 am'
 },
 {
@@ -17,7 +17,7 @@ var announcements=[
     content:`Changing Our Admin to Mr Suddenly
     phone: 0136247251`,
     image:"assets/images/profile-image.png",
-    target:['Block B','Block D'],
+    target:['Block A','Block B','Block C','Block D'],
     time:'25 Apr 2022, 5:23 am'
 },
 {
@@ -25,7 +25,7 @@ var announcements=[
     title:"My Second Announcement",
     content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla. Magnam, tenetur quae nemo nobis cumque, corrupti dolores totam qui consequatur iusto quibusdam? Neque, ratione eius, sit officiis laborum sequi repudiandae mollitia blanditiis inventore maiores est ullam quasi deleniti itaque modi, aspernatur pariatur hic! Perferendis quaerat exercitationem incidunt. Reprehenderit, dolor!",
     image:"https://cdn.pixabay.com/photo/2015/12/07/10/56/architect-1080589_1280.jpg",
-    target:['Block A'],
+    target:['Block B'],
     time:'25 Apr 2022, 5:23 am'
 },
 {
@@ -33,20 +33,20 @@ var announcements=[
     title:"Another Announcement",
     content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla. Magnam, tenetur quae nemo nobis cumque, corrupti dolores totam qui consequatur iusto quibusdam? Neque, ratione eius, sit officiis laborum sequi repudiandae mollitia blanditiis inventore maiores est ullam quasi deleniti itaque modi, aspernatur pariatur hic! Perferendis quaerat exercitationem incidunt. Reprehenderit, dolor!",
     image:"assets/images/redident.png",
-    target:['Block A','Block C','Block D'],
+    target:['Block C','Block D'],
     time:'25 Apr 2022, 5:23 am'
 },
     
 ]
 
     $(document).ready(function(){
-        displayAnnouncements()
+        displayPosts()
     })
 
-    function displayAnnouncements(){
+    function displayPosts(){
         $('#announcement_container').empty()
 
-        for (announcement of announcements.reverse()){
+        for (announcement of posts.reverse()){
                 var card = `<div class="card mt-4 mycontainer">
                         <div class="card-body">
                             ${getTag(announcement.target)}
@@ -58,7 +58,7 @@ var announcements=[
                         </div>`
                 $('#announcement_container').append(card)
             }
-        announcements.reverse()
+        posts.reverse()
     }
 
     function getTag(array){
@@ -91,7 +91,7 @@ var announcements=[
     }
 
 
-    function submitAnnouncement(){
+    function submitPost(){
 
         let title = document.getElementById("title").value;
         let content = document.getElementById("content").value;
@@ -105,11 +105,11 @@ var announcements=[
                 target:[],
                 time: new Date().toLocaleDateString('en-uk', { year:"numeric", month:"short", day:"numeric",hour:"numeric", minute:"numeric", hour12: true})
             }
-            announcements.push(announcement)
+            posts.push(announcement)
         }
         $('#title').val('')
         $('#content').val('')
-        displayAnnouncements()
+        displayPosts()
     }
 
     // Filter Function
@@ -118,7 +118,7 @@ var announcements=[
         $('#block-span').text(block)
 
         $('#announcement_container').empty()
-        for (announcement of announcements.reverse()){
+        for (announcement of posts.reverse()){
             var blocks = announcement.target
             if(blocks.includes(block)){
                 var card = `<div class="card mt-4 mycontainer">
@@ -133,7 +133,7 @@ var announcements=[
                 $('#announcement_container').append(card)
             }
         }
-        announcements.reverse()
+        posts.reverse()
         toggleActive(block)
     }
 
@@ -155,7 +155,7 @@ var announcements=[
         // toggle active
         if(currentActive){
             // then cancel filter
-            displayAnnouncements()
+            displayPosts()
             $('#block-span').text('All Blocks')
             elem.classList.remove('btn_mygreen');
           } else {

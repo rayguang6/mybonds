@@ -31,7 +31,7 @@ var residents = [
         name: "Chin Chin",
         age: 16,
         vaccine: "Second Dose",
-        covid: "High Risk",
+        covid: "Close Contact",
         updated: "13 Apr, 02:05",
         contact: "016-4219470",
     },
@@ -40,7 +40,7 @@ var residents = [
         name: "Mr Suddenly",
         age: 21,
         vaccine: "Not Vaccinated",
-        covid: "Diagnosed",
+        covid: "Positive",
         updated: "11 Apr, 11:02",
         contact: "016-6030616",
     },
@@ -63,7 +63,7 @@ var reports =  [
         name: "Thunder Light",
         type: "covid",
         image: "https://cdn.pixabay.com/photo/2021/08/02/18/11/testing-6517477_1280.jpg",
-        status:"Diagnosed",
+        status:"Positive",
         description:"I went to gym, cafe2",
         date: "20/04/2022, 00:02",
     },
@@ -177,8 +177,8 @@ var reports =  [
         if(type==="covid"){
             return `
             <option value="Low Risk">Low Risk</option>
-            <option value="High Risk">High Risk</option>
-            <option value="Diagnosed">Diagnosed</option>
+            <option value="Close Contact">Close Contact</option>
+            <option value="Positive">Positive</option>
             `
         }else if(type==="vaccine"){
             return `
@@ -353,12 +353,12 @@ var reports =  [
             case "Second Dose":
                 return `<span class="badge rounded-pill bg-opacity-75 bg-success">${status}</span>`
             //warning
-            case "High Risk":
+            case "Close Contact":
             case "vaccine":
             case "First Dose":
                 return `<span class="badge rounded-pill bg-opacity-75 bg-warning">${status}</span>`
             //danger
-            case "Diagnosed":
+            case "Positive":
             case "covid":
             case "Not Vaccinated":
                 return `<span class="badge rounded-pill bg-opacity-75 bg-danger">${status}</span>`
