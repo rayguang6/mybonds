@@ -28,12 +28,12 @@
 				<h2>User Login</h2>
 
 				<div class="wrap-input">
-					<input class="input" type="text" id="unit" placeholder="Unit"
-						required oninvalid="this.setCustomValidity('Unit is required: x-xx-xx')" oninput="this.setCustomValidity('')"
+					<input class="input" type="text" id="id" placeholder="ID"
+						required oninvalid="this.setCustomValidity('Login ID is required: x-xx-xx')" oninput="this.setCustomValidity('')"
 						pattern="[A-Z]{1}-[0-9]{2}-[0-9a-z]{2}" >
 					<span class="focus-input"></span>
 					<span class="symbol-input">
-						<i class="fa fa-envelope" aria-hidden="true"></i>
+						<i class="fa-solid fa-id-card" aria-hidden="true"></i>
 					</span>
 				</div>
 
@@ -44,18 +44,18 @@
 						<i class="fa fa-lock" aria-hidden="true"></i>
 					</span>
 				</div>
-				<p>Select login status</p>
+
 				<div class="d-flex">
 					<div class="w-50 text-left">
+						<p>Select login status</p>
 						<select class="select" id="role">
 							<option value="resident">Resident</option>
 							<option value="admin">Admin</option>
 						</select>
 					</div>
-					<div class="w-50 text-right">
-						<label class="label">
+					<div class="w-60 text-right">
+						<label class="checkbox">Remember Me
 							<input type="checkbox">
-							Remember Me							
 						</label>
 					</div>
 				</div>
