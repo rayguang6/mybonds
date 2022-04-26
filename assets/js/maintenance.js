@@ -209,6 +209,7 @@ function editRow(location) {
         console.log("editRow called")
         updateResident(location)
         e.preventDefault();
+        $("#Modal").modal('hide');
     })
 }
 
@@ -281,6 +282,7 @@ function approveRequest(location) {
     addRow()
     $("#form").submit(function (e) {
         deleteRow(location, requests, '#RequestTable')
+        $("#Modal").modal('hide');
     })
 }
 
