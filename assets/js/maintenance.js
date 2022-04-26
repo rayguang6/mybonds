@@ -3,9 +3,11 @@
 $(document).ready(function () {
     buildMaintenanceContent('#MaintenanceTableBody')
     buildRequestContent('#RequestTableBody')
+    buildComplainContent('#ComplainTableBody')
 
     buildTable('#MaintenanceTable')
     buildTable('#RequestTable')
+    buildTable('#ComplainTable')
 })
 
 // Resident Request Data List
@@ -19,6 +21,12 @@ var schedules = [
     { location: "A-03-S1", type: "facility", company: "Jojo Sdn Bhd", contact: "016-2394546", date: "2022-04-27T13:00", details: "Maintenance", description: "swimming pool monthly cleaning", status: "ongoing" },
     { location: "A-03-G1", type: "facility", company: "Koi Sdn Bhd", contact: "04-9327546", date: "2022-04-27T13:00", details: "Maintenance", description: "gym facilities maintenance", status: "ongoing" },
     { location: "B-03-G2", type: "facility", company: "Koi Sdn Bhd", contact: "04-9327546", date: "2022-04-29T13:00", details: "Maintenance", description: "gym facilities maintenance", status: "reserved" }
+]
+
+// Complain list
+var complains = [
+    { location: "A-01-13", name: "Booi Jia Min", contact: "012-1238472",  date: "2022-04-19T13:00", description: "Upstair always party at night, causing disturbance." },
+    { location: "D-03-12", name: "Adif", contact: "019-2693012", date: "2022-04-18T13:21", description: "My umbrella left in gym is stolen. I suspect the naughthy kids." }
 ]
 
 function buildTable(tableID) {
@@ -43,8 +51,10 @@ function rebuildTable(tableID) {
     console.log(tableID)
     if (tableID === '#MaintenanceTable') {
         buildMaintenanceContent('#MaintenanceTableBody')
-    } else {
+    } else if (tableID === '#RequestTable') {
         buildRequestContent('#RequestTableBody')
+    } else{
+        buildComplainContent('#ComplainTableBody')
     }
     buildTable(tableID)
 }
@@ -112,6 +122,24 @@ function buildRequestContent(tableBody) {
     }
 }
 
+function buildComplainContent(tableBody) {
+    $(tableBody).empty() //clear the html first
+    for (complain of complains) {
+        //用template literal (``) 来一次过include所有html 和 string. 用${} 来写 variable
+        newRow =
+            `<tr onclick="viewComplain('${complain.location}')">
+                <td> ${complain.location} </td>
+                <td> ${complain.name} </td>
+                <td> ${complain.contact} </td>
+                <td> ${complain.date} </td>                
+                <td><button type="button" class="btn" onclick="settleComplain('${complain.location}')"><i class="bi bi-check-square text-primary"></i></button>
+                </td>
+            </tr>
+            `
+        $(tableBody).append(newRow)
+    }
+}
+
 function buildModal() {
     console.log("building modal...")
     $('#ModalBody').empty() //clear the html first
@@ -164,6 +192,49 @@ function buildModal() {
         <input type="submit"  class="me-lg-3 btn btn-primary" id="submit">
     </form> `
     $('#ModalBody').append(newBody)
+}
+
+function viewComplain(unit){
+    //build modal body
+    $('#ModalBody').empty()
+    newBody =`
+    <form id="form">
+        <div class="mb-3">
+            <label for="location" class="col-form-label">Unit Number:</label>
+            <input type="text" class="form-control" id="location" pattern="[A-Z]{1}-[0-9]{2}-[0-9a-zA-Z]{2}" placeholder="X-XX-XX" required>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="col-form-label">Name:</label>
+            <input type="text" class="form-control" id="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="contact" class="col-form-label">Contact Number:</label>
+            <input type="text" class="form-control" id="contact" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="col-form-label">Description: </label>
+            <textarea class="form-control" id="description" rows="3" cols="30"></textarea>
+        </div>
+    </form> `
+    $('#ModalBody').append(newBody)
+
+    //show the modal
+    $('#Modal').on('show.bs.modal', function () {
+        $('#AddModalLabel').text('View Complaint Details: ');
+    });
+    $('#Modal').modal('show');
+    
+    //fixing values into form
+    for (complain of complains) {
+        if (complain.location === unit) {
+            $('#Modal input[id="location"]').val(complain.location)
+            $('#Modal input[id="name"]').val(complain.name)
+            $('#Modal input[id="contact"]').val(complain.contact)
+            $('#Modal textarea[id="description"]').val(complain.description)
+            $('#Modal input').prop("disabled", true)
+            $('#Modal textarea').prop("disabled", true)
+        }
+    }
 }
 
 function editRowDisplay(location, arrays) {
@@ -249,6 +320,13 @@ function addSchedule() {
     $("#form").submit(function (e) {
         $("#form").trigger("reset");
     })
+}
+
+function settleComplain(location){
+    event.stopPropagation();
+    if (confirm(`Settle complaints for : ${location}?`)) {
+        deleteRow(location, complains, '#ComplainTable')
+    }
 }
 
 function deleteSchedule(location) {
