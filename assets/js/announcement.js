@@ -14,8 +14,7 @@ var announcements=[
 {
     announcementId:2,
     title:"Changing Our Admin",
-    content:`Changing Our Admin to Mr Suddenly
-    phone: 0136247251`,
+    content:"Changing Our Admin to Mr Suddenly phone: 0136247251",
     image:"assets/images/profile-image.png",
     target:['Block A','Block B','Block C','Block D'],
     time:'25 Apr 2022, 5:23 am'
@@ -164,3 +163,57 @@ var announcements=[
     }
     
 
+/////////////////////////////////////////////
+//Show at resident DASHBOARD
+////////////////////////////////////////////
+getTodayAnnouncements()
+function getTodayAnnouncements(){
+    $('#announcement_carousel').empty()
+
+    for (announcement of announcements.reverse()){
+        // TODO: if within 24 hours
+
+        var time = announcement.time
+        var target = announcement.target
+        var image = announcement.image
+        var content = announcement.content
+            var card = `
+                <div class="card" style="cursor:pointer;">
+                    <div class="card-body" onclick="popupFullAnnouncement(${announcement.announcementId})">
+                        <h6>${announcement.title}</h6>
+                        <span class="text-muted ms-auto">${time}</span>
+                        ${getImageElement(image)}
+                        <p class="card-text" style="white-space: pre-line">${content.substring(0,30)}...</p>
+                    </div>
+                </div>
+                `
+            $('#announcement_carousel').append(card)
+        }
+    announcements.reverse()
+}
+
+function popupFullAnnouncement(id){
+    event.stopPropagation()
+    for (announcement of announcements){
+        if(announcement.announcementId == id){
+            var card = `<div class="card">
+                    <div class="card-body">
+                        Hello
+                        ${getTag(announcement.target)}
+                        <h5>${announcement.title}</h5>
+                        <span class="text-muted ms-auto">${announcement.time}</span>
+                        ${getImageElement(announcement.image)}
+                        <p class="card-text" style="white-space: pre-line">${announcement.content}</p>
+                    </div>
+                    </div>
+                `
+        }
+    }buildModalContent(card) 
+}
+
+function buildModalContent(content){
+    $('#announcementPopupModal').modal('show')
+    
+    $('#announcementPopupModal .modal-body').empty()
+    $('#announcementPopupModal .modal-body').append(content)
+}

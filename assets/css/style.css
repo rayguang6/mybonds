@@ -516,8 +516,28 @@ Explore START
 .text-color {
     color: #FFFFFF;
 }
+.tab{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-left: 15px;
+  font-size: larger;
+}
+
+/* hover animation */
+.tab-content .card:hover{
+  transform: translate3d(0, -3px, 0 );
+  box-shadow: 0 2rem 5rem 0 rgba(0, 0, 0, 0.1);
+}
 
 /*************************
 Explore END  
 ***************************/
 
+/***************************
+Dashboard
+***************************/
+
+/* Style The Image Carousel */
+/* img{
+  background-size: cover;
+  background-position: center;
+} */
