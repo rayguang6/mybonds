@@ -3,9 +3,11 @@
 $(document).ready(function () {
     buildUserContent('#UserTableBody')
     buildRequestContent('#RequestTableBody')
+    buildVisitorContent('#VisitorTableBody')
 
     buildTable('#UserTable')
     buildTable('#RequestTable')
+    buildTable('#VisitorTable')
 })
 
 // Resident Data List
@@ -18,7 +20,12 @@ var residents = [
 ]
 
 // Request Data List
-var requests = [{ unit: "B-01-03", debt: 1050, date: Date() }, { unit: "A-01-09", debt: 0, date: Date() }]
+var requests = [{ unit: "B-01-03", debt: 1050, date: "27/04/2022"}, { unit: "A-01-09", debt: 0, date: "26/04/2022"}]
+
+var visitors = [{ date: "28/04/2022", name: "Mr Suddenly", unit: "D-01-09", car:"PNG3117", contact:"012-9876543"},
+{ date: "28/04/2022", name: "Mr Handsome", unit: "A-01-10", car:"PNK3117", contact:"016-9123543"},
+{ date: "29/04/2022", name: "Ms Beauty", unit: "C-10-10", car:"WAP3228", contact:"012-9877293"},]
+
 
 function buildTable(tableID) {
     //initialize datatable
@@ -93,6 +100,24 @@ function buildRequestContent(tableBody) {
                 <td> ${contact} </td>                   
                 <td><button type="button" class="btn" onclick="approveDeletion('${request.unit}')"><i class="bi bi-check-square text-primary"></i></button>
                 </td>
+            </tr>
+            `
+        $(tableBody).append(newRow)
+    }
+}
+
+function buildVisitorContent(tableBody) {
+    $(tableBody).empty() //clear the html first
+    console.log(visitors.length)
+    for (visitor of visitors) {
+        //用template literal (``) 来一次过include所有html 和 string. 用${} 来写 variable
+        newRow =
+            `<tr>
+                <td> ${visitor.date} </td>
+                <td> ${visitor.name} </td>
+                <td> ${visitor.unit} </td>
+                <td> ${visitor.car} </td>
+                <td> ${visitor.contact} </td>
             </tr>
             `
         $(tableBody).append(newRow)
@@ -212,6 +237,7 @@ function editRow(unit) {
         console.log("editRow called")
         updateResident(unit)
         e.preventDefault();
+        $("#Modal").modal('hide');
     })
 }
 
@@ -231,8 +257,8 @@ function updateResident(unit) {
                 resident.gender = gender,
                 resident.contact = contact,
                 resident.emergency = emergency
-            resident.password = password
-            alert(name + IC + contact + emergency + gender);
+                resident.password = password
+                alert("Information updated!");
 
             rebuildTable('#UserTable')
             rebuildTable('#RequestTable')
