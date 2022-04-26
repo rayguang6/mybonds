@@ -5,11 +5,11 @@ var announcements=[
     announcementId:1,
     title:"My First Announcement has long title",
     content:`My first Content
-    With Hello Line Break
+    With Line Break
     and 3rd line`,
     image:"",
     target:['Block B','Block C'],
-    time: '24 Apr 2022, 6:23 am'
+    time: '16 Apr 2022, 6:23 am'
 },
 {
     announcementId:2,
@@ -17,24 +17,33 @@ var announcements=[
     content:"Changing Our Admin to Mr Suddenly phone: 0136247251",
     image:"assets/images/profile-image.png",
     target:['Block A','Block B','Block C','Block D'],
-    time:'25 Apr 2022, 5:23 am'
+    time:'22 Apr 2022, 5:55 am'
 },
 {
     announcementId:3,
     title:"My Second Announcement",
     content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla. Magnam, tenetur quae nemo nobis cumque, corrupti dolores totam qui consequatur iusto quibusdam? Neque, ratione eius, sit officiis laborum sequi repudiandae mollitia blanditiis inventore maiores est ullam quasi deleniti itaque modi, aspernatur pariatur hic! Perferendis quaerat exercitationem incidunt. Reprehenderit, dolor!",
     image:"https://cdn.pixabay.com/photo/2015/12/07/10/56/architect-1080589_1280.jpg",
-    target:['Block B'],
-    time:'25 Apr 2022, 5:23 am'
+    target:['Block B','Block D'],
+    time:'24 Apr 2022, 8:31 am'
 },
 {
     announcementId:4,
-    title:"Another Announcement",
+    title:"Important! Please...",
     content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla. Magnam, tenetur quae nemo nobis cumque, corrupti dolores totam qui consequatur iusto quibusdam? Neque, ratione eius, sit officiis laborum sequi repudiandae mollitia blanditiis inventore maiores est ullam quasi deleniti itaque modi, aspernatur pariatur hic! Perferendis quaerat exercitationem incidunt. Reprehenderit, dolor!",
-    image:"assets/images/resident.png",
+    image:"assets/images/admin.png",
     target:['Block C','Block D'],
-    time:'25 Apr 2022, 5:23 am'
+    time:'25 Apr 2022, 2:23 pm'
 },
+{
+    announcementId:5,
+    title:"Note! Another Announcement",
+    content:"We have found that a lot of people Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla. Magnam, tenetur quae nemo nobis cumque, corrupti dolores totam qui consequatur iusto quibusdam? Neque, ratione eius, sit officiis laborum sequi repudiandae mollitia blanditiis inventore maiores est ullam quasi deleniti itaque modi, aspernatur pariatur hic! Perferendis quaerat exercitationem incidunt. Reprehenderit, dolor!",
+    image:"assets/images/resident.png",
+    target:['Block C',],
+    time:'28 Apr 2022, 5:23 am'
+},
+
     
 ]
 
@@ -113,6 +122,8 @@ var announcements=[
 
     // Filter Function
     function filterBlock(block){
+
+        // block = $('#filter-block-announcement').val()
         
         $('#block-span').text(block)
 
@@ -190,6 +201,20 @@ function getTodayAnnouncements(){
             $('#announcement_carousel').append(card)
         }
     announcements.reverse()
+
+    // Show the last card
+    var card = `
+                <div class="card" style="cursor:pointer;">
+                    <div class="card-body">
+                        <h6>No More Announcements...</h6>
+                        <span class="text-muted ms-auto"></span>
+                        ${getImageElement("assets/images/admin.png")}
+                        <p class="card-text fw-bold text-center" style="white-space: pre-line"><a href="announcement.html">View Previous All Announcements</a></p>
+                    </div>
+                </div>
+                `
+            $('#announcement_carousel').append(card)
+    
 }
 
 function popupFullAnnouncement(id){
@@ -198,7 +223,6 @@ function popupFullAnnouncement(id){
         if(announcement.announcementId == id){
             var card = `<div class="card">
                     <div class="card-body">
-                        Hello
                         ${getTag(announcement.target)}
                         <h5>${announcement.title}</h5>
                         <span class="text-muted ms-auto">${announcement.time}</span>

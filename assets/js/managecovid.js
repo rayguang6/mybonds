@@ -1,4 +1,3 @@
-
 //GLOBAL VARIABLE
 function getDate(){
     return new Date().toLocaleDateString('en-uk', {  month:"short", day:"numeric"})
@@ -161,7 +160,6 @@ var reports =  [
                     <button class="btn px-0" title="Update Covid" onclick="editStatus('${resident.unit}','${resident.name}','${resident.covid}','covid')">
                         <i class="fa-solid fa-virus-covid text-danger fs-4"></i>
                     </button>
-
                     <button class="btn px-0" title="Update Vaccine" onclick="editStatus('${resident.unit}','${resident.name}','${resident.vaccine}','vaccine')">
                         <i class="fa-solid fa-syringe text-primary fs-4"></i>
                     </button>
@@ -214,9 +212,7 @@ var reports =  [
                     ${getSelectInput(editType)}
                 </select>
             </div>
-
         </div>
-
         <div class="modal-footer">
             <button type="button" class="btn btn-primary" onclick="updateStatus('${unit}','${editType}','${reportId}')">Update</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -446,7 +442,6 @@ function getResidentByUnit(unit){
                 <h5 class="modal-title" >View Report Of ${report.name}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
             <div class="modal-body">
                 <p>Report Id: <span class='h6'>${report.reportId}</span> </p>
                 <p>Name: <span class='h6'>${report.name}</span> </p>
@@ -459,7 +454,6 @@ function getResidentByUnit(unit){
                 
                 <img src="${report.image}" alt="image" width='200'>
             </div>
-
             <div class="modal-footer">
                 ${getButton(report.unit, report.name, report.status,report.type, report.reportId)}
                 <button type="button" class="btn btn-danger" onclick="sweetConfirm('${report.reportId}','${report.name}','${report.unit}')">Delete Report</button>
@@ -546,4 +540,3 @@ function getResidentByUnit(unit){
           return false
         })
     }
-        
