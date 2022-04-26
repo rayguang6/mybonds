@@ -69,6 +69,7 @@ h6 {
 /** Scroll Bar **/
 /* width */
 ::-webkit-scrollbar {
+
   width: 10px;
 }
 
@@ -197,7 +198,7 @@ Styling Topbar
     padding-left: 20%;
   }
   #topbar {
-    width: 80%;
+    width: 70%;
   }
 }
 /* Responsive bar end */

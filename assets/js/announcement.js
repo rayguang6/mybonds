@@ -208,7 +208,8 @@ function popupFullAnnouncement(id){
                     </div>
                 `
         }
-    }buildModalContent(card) 
+    }
+    buildModalContent(card) 
 }
 
 function buildModalContent(content){
