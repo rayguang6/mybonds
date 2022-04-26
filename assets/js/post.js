@@ -4,16 +4,16 @@ var posts=[
     {
         announcementId:1,
         resident:"Mr Thunder", //wll change to id later
-        title:"My First Post has long title",
+        title:"My First Ever Post!",
         content:`My first Content
-        With Hello Line Break
+        with Line Break
         and 3rd line`,
         image:"",
         time: '24 Apr 2022, 6:23 am'
     },
     {
         announcementId:2,
-        resident:"Chin Chin", 
+        resident:"Donic", 
         title:"Giveaway SPM Reference Books",
         content:`PM Me!`,
         image:"assets/images/profile-image.png",
@@ -23,15 +23,15 @@ var posts=[
         announcementId:3,
         resident:"Mr Suddenly", 
         title:"Who wants to play chess together?",
-        content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla. Magnam, tenetur quae nemo nobis cumque, corrupti dolores totam qui consequatur iusto quibusdam? Neque, ratione eius, sit officiis laborum sequi repudiandae mollitia blanditiis inventore maiores est ullam quasi deleniti itaque modi, aspernatur pariatur hic! Perferendis quaerat exercitationem incidunt. Reprehenderit, dolor!",
-        image:"https://cdn.pixabay.com/photo/2015/12/07/10/56/architect-1080589_1280.jpg",
+        content:"Feeling bored during lock down? Join our chess club and play chess together",
+        image:"https://media.npr.org/assets/img/2016/10/24/gettyimages-492378344-2a5d8b2206e74c67d7b1b94c3576ace7cd32bb65-s1100-c50.jpg",
         time:'25 Apr 2022, 5:23 am'
     },
     {
         announcementId:4,
         resident:"Lei Zhi Guang", 
         title:"Finding Teammates For Basketball 3 on 3",
-        content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla. Magnam, tenetur quae nemo nobis cumque, corrupti dolores totam qui consequatur iusto quibusdam? Neque, ratione eius, sit officiis laborum sequi repudiandae mollitia blanditiis inventore maiores est ullam quasi deleniti itaque modi, aspernatur pariatur hic! Perferendis quaerat exercitationem incidunt. Reprehenderit, dolor!",
+        content:"Anybody wants to join the basketball 3on3 held on kk8? Come kk12 tomorrow evening and let us form a team",
         image:"https://d1fdloi71mui9q.cloudfront.net/4HcZ1jCpQoyYRAwLxBDl_E74101X0vXSnBaCd",
         time:'25 Apr 2022, 9:23 am'
     },

@@ -163,7 +163,7 @@
                                 </li>
                                 
                             </ul>      
-                            <button label="Get Suppport" class="me-lg-3 btn btn_mygreen"><i class="bi bi-question-circle me-1"></i>Get Help</button>
+                            <button label="Get Suppport" class="me-lg-3 btn btn_mygreen"><i class="bi bi-question-circle me-1"></i>Help Requests</button>
                             
                   </span>
                       </div>
@@ -182,14 +182,70 @@
                 <!-- ***************************************************************
                                      PUT YOUR CONTENT BELOW 
                  *******************************************************************-->
-
-                 <div class="col-8">
-                     <div class="mycontainer">
-                         <h2>Admin Dashboard</h2>
-                     </div>
+                 <div class="col-md-6 col-lg-3 mt-4 mt-lg-0">
+                    <div class="mycontainer">
+                        <div class="d-flex align-items-center py-auto">
+                            <i class="bi bi-people-fill fs-2 text-primary"></i>
+                            <h2 class="ms-2">166</h2>
+                        </div>
+                     <h5>Total Residents</h5>
+                     <a href="admin-manageuser.html" class="btn btn-primary">Manage Resident</a>
+                    </div>
                  </div>
 
-                <div class="col-12">
+                 <div class="col-md-6 col-lg-3 mt-4 mt-lg-0 ">
+                    <div class="mycontainer">
+                        <div class="d-flex align-items-center py-auto">
+                            <i class="bi bi-shield-fill-plus fs-2 text-primary"></i>
+                            <h2 class="ms-2">13</h2>
+                        </div>
+                     <h5>Active Cases</h5>
+                     <a href="admin-managecovid.html" class="btn btn-primary">Manage Covid</a>
+                    </div>
+                 </div>
+
+                 <div class="col-md-6 col-lg-3 mt-4 mt-lg-0 ">
+                    <div class="mycontainer">
+                        <div class="d-flex align-items-center py-auto">
+                            <i class="bi bi-person-badge-fill fs-2 text-primary"></i>
+                            <h2 class="ms-2">5</h2>
+                        </div>
+                     <h5>Today's Visitor</h5>
+                     <a href="admin-manageuser.html#VisitorTable" class="btn btn-primary">Manage Visitor</a>
+                    </div>
+                 </div>
+
+                 <div class="col-md-6 col-lg-3 mt-4 mt-lg-0">
+                    <div class="mycontainer">
+                        <div class="d-flex align-items-center py-auto">
+                            <i class="bi bi-wrench-adjustable-circle-fill fs-2 text-primary"></i>
+                            <h2 class="ms-2">2</h2>
+                        </div>
+                     <h5>Active Reports</h5>
+                     <a href="admin-maintenance.html" class="btn btn-primary">Maintenance</a>
+                    </div>
+                 </div>
+
+
+                 <!-- Post Announcement -->
+                 <div class="col-12 mt-4">
+                     <div class="mycontainer ">
+                        <h2>Post A New Announcement</h2>
+                        <form id="annoucement-form">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="title" placeholder="Title" >
+                            </div>
+                            <div class="input-group mb-3">
+                                <textarea class="form-control" id="content" placeholder="Your Content Body Here"></textarea>
+                            </div>
+                    
+                        </form>
+                        <button class="btn btn-primary" onclick="submitAnnouncement()">Submit</button>        
+                    </div>
+                 </div>
+
+                
+                
 
                     <!-- Scrollable modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -209,10 +265,10 @@
                     </div>
                     </div>
                     <!-- Modal End -->  
-                </div>
 
 <!-- ### CHANGE the innner text TO CHANGE THE TOPBAR TITLE --><script>$("#page_title").text("Dashboard")</script>
 <!-- ### CHANGE the innner text TO CHANGE THE TITLE --><script>$("title").text("Admin | Dashboard")</script>
+<!-- (Included In This file Only)Manage Covid JS --><script src="assets/js/announcement.js"></script>
 
                 <!-- ***************************************************************
                             PUT YOUR CONTENT ABOVE (remember to change title)

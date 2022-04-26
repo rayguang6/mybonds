@@ -116,8 +116,8 @@ Styling Sidebar
 
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
-  background-color: #46cdcf;
-  color: white;
+  background-color: #46cdcf !important;
+  color: white !important;
 }
 
 #menu .nav-link {
@@ -126,11 +126,11 @@ Styling Sidebar
 }
 
 .nav-link {
-  color: #46cdcf;
+  color: #46cdcf !important;
 }
 
 .nav-link:hover {
-  color: #46cdcf;
+  color: #46cdcf !important;
   opacity: 0.8;
 }
 
@@ -499,6 +499,17 @@ Profile START
   background-color: white;
   border-top-left-radius: 25px;
 }
+.profile_container .form-control:disabled, select:disabled option{
+  background: white;
+  border: none;
+  margin-left: -12px;
+}
+
+.profile_container select:disabled{
+  background: white;
+  border: none;
+  margin-left: -12px;
+}
 
 /*************************
 Profile END  
@@ -551,3 +562,59 @@ Dashboard
   background-size: cover;
   background-position: center;
 } */
+
+
+/***************************
+Slick Slider
+****************************/
+.slider {
+  margin: auto;
+  width: 80%;
+}
+
+.slick-slide {
+  margin: 0px;
+}
+
+.slick-slide img {
+  width: 100%;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #46CDCF !important;
+}
+
+.slick-slide {
+  transition: all ease-in-out .3s;
+  opacity: .2;
+}
+
+.slick-active {
+  opacity: .5;
+}
+
+.slick-current {
+  opacity: 1;
+}
+/* Slider End */
+
+/* *****************
+Chat Start
+**************** */
+#person-container {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+#chat-container {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  padding-bottom: 10px;
+}
+/* *****************
+Chat End
+**************** */

@@ -3,10 +3,9 @@
 var announcements=[
 {
     announcementId:1,
-    title:"My First Announcement has long title",
-    content:`My first Content
-    With Line Break
-    and 3rd line`,
+    title:"My First Announcement that has long title",
+    content:`My first Announcement
+    Please take note!`,
     image:"",
     target:['Block B','Block C'],
     time: '16 Apr 2022, 6:23 am'
@@ -21,7 +20,7 @@ var announcements=[
 },
 {
     announcementId:3,
-    title:"My Second Announcement",
+    title:"Electric Maintenance Today",
     content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla. Magnam, tenetur quae nemo nobis cumque, corrupti dolores totam qui consequatur iusto quibusdam? Neque, ratione eius, sit officiis laborum sequi repudiandae mollitia blanditiis inventore maiores est ullam quasi deleniti itaque modi, aspernatur pariatur hic! Perferendis quaerat exercitationem incidunt. Reprehenderit, dolor!",
     image:"https://cdn.pixabay.com/photo/2015/12/07/10/56/architect-1080589_1280.jpg",
     target:['Block B','Block D'],
@@ -29,7 +28,7 @@ var announcements=[
 },
 {
     announcementId:4,
-    title:"Important! Please...",
+    title:"Important! Please Make Sure That",
     content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla. Magnam, tenetur quae nemo nobis cumque, corrupti dolores totam qui consequatur iusto quibusdam? Neque, ratione eius, sit officiis laborum sequi repudiandae mollitia blanditiis inventore maiores est ullam quasi deleniti itaque modi, aspernatur pariatur hic! Perferendis quaerat exercitationem incidunt. Reprehenderit, dolor!",
     image:"assets/images/admin.png",
     target:['Block C','Block D'],
@@ -37,11 +36,11 @@ var announcements=[
 },
 {
     announcementId:5,
-    title:"Note! Another Announcement",
-    content:"We have found that a lot of people Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla. Magnam, tenetur quae nemo nobis cumque, corrupti dolores totam qui consequatur iusto quibusdam? Neque, ratione eius, sit officiis laborum sequi repudiandae mollitia blanditiis inventore maiores est ullam quasi deleniti itaque modi, aspernatur pariatur hic! Perferendis quaerat exercitationem incidunt. Reprehenderit, dolor!",
+    title:"Wifi Issue Resolved",
+    content:"We have found that a lot of people Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla. Magnam, tenetur quae nemo nobis cumque, corrupti dolores totam qui consequatur iusto quibusdam? Neque, ratione eius, sit officiis laborum sequi repudiandae mollitia blanditiis inventore maiores est ullam quasi deleniti itaque modi, aspernatur pariatur hic! Perferendis quaerat exercitationem incidunt. Reprehenderit, dolor! Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla. Magnam, tenetur quae nemo nobis cumque, corrupti dolores totam qui consequatur iusto quibusdam? Neque, ratione eius, sit officiis laborum sequi repudiandae mollitia blanditiis inventore maiores est ullam quasi deleniti itaque modi, aspernatur pariatur hic! Perferendis quaerat exercitationem incidunt. Reprehenderit, dolor! Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla. Magnam, tenetur quae nemo nobis cumque, corrupti dolores totam qui consequatur iusto quibusdam? Neque, ratione eius, sit officiis laborum sequi repudiandae mollitia blanditiis inventore maiores est ullam quasi deleniti itaque modi, aspernatur pariatur hic! Perferendis quaerat exercitationem incidunt. Reprehenderit, dolor!",
     image:"assets/images/resident.png",
     target:['Block C',],
-    time:'28 Apr 2022, 5:23 am'
+    time:'27 Apr 2022, 5:23 am'
 },
 
     
@@ -185,16 +184,19 @@ function getTodayAnnouncements(){
         // TODO: if within 24 hours
 
         var time = announcement.time
-        var target = announcement.target
-        var image = announcement.image
+        // var target = announcement.target
+        // var image = announcement.image
         var content = announcement.content
+        var dots = announcement.title.length>30?'...':''
+        var contentDote = announcement.content.length>30?'...':''
+
             var card = `
-                <div class="card" style="cursor:pointer;">
+                <div class="card preview-announcement-card" style="cursor:pointer;">
                     <div class="card-body" onclick="popupFullAnnouncement(${announcement.announcementId})">
-                        <h6>${announcement.title}</h6>
-                        <span class="text-muted ms-auto">${time}</span>
-                        ${getImageElement(image)}
-                        <p class="card-text" style="white-space: pre-line">${content.substring(0,30)}...</p>
+                        <small class="text-muted">${time}</small>
+                        <img src="assets/images/admin.png" alt="Announcement Thumbnail" class="w-100">
+                        <h6>${announcement.title.substring(0,30)}${dots}</h6>
+                        <p class="card-text" style="white-space: pre-line">${content.substring(0,40)}${contentDote}</p>
                     </div>
                 </div>
                 `
@@ -205,11 +207,10 @@ function getTodayAnnouncements(){
     // Show the last card
     var card = `
                 <div class="card" style="cursor:pointer;">
+                <img src="assets/images/admin.png" alt="Announcement Thumbnail" class="w-100">
                     <div class="card-body">
-                        <h6>No More Announcements...</h6>
-                        <span class="text-muted ms-auto"></span>
-                        ${getImageElement("assets/images/admin.png")}
-                        <p class="card-text fw-bold text-center" style="white-space: pre-line"><a href="announcement.html">View Previous All Announcements</a></p>
+                        <h6 class="text-center fw-bold" >No More Announcements...</h6>
+                        <p class="btn btn-mygreen card-text text-center" style="white-space: pre-line"><a class="" href="announcement.html">View Previous All Announcements</a></p>
                     </div>
                 </div>
                 `
@@ -236,7 +237,7 @@ function popupFullAnnouncement(id){
     buildModalContent(card) 
 }
 
-function buildModalContent(content){
+async function buildModalContent(content) {
     $('#announcementPopupModal').modal('show')
     
     $('#announcementPopupModal .modal-body').empty()

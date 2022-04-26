@@ -169,7 +169,7 @@
                                     </li>
 
                                 </ul>
-                                <button label="Get Suppport" class="me-lg-3 btn btn_mygreen"><i class="bi bi-question-circle me-1"></i>Get Help</button>
+                                <a href="chat.html" label="Get Suppport" class="me-lg-3 btn btn_mygreen"><i class="fa-solid fa-headset me-2"></i>Get Help</a>
                             </span>
                         </div>
                     </nav>
@@ -188,63 +188,8 @@
                         (Start With A Responsive Col, with .mycontainer class)
                  *******************************************************************-->
 
-                        <!-- POST Column -->
-                        <div class="col-lg-8">
-                            <!--  submit post form -->
-                            <div class="mycontainer">
-                                <h2 class="text-center">Post Something...</h2>
-                                <form id="post-form">
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" id="post-title" placeholder="Title">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <textarea class="form-control" id="post-content" placeholder="Your Post Content Here"></textarea>
-                                    </div>
-
-                                </form>
-                                <button class="btn btn-primary" onclick="submitPost()">Submit</button>
-                            </div>
-
-                            <!-- Post Container -->
-                            <div id="post_container"></div>
-
-                        </div>
-
                         <!-- Right Bar (For admin announcements and calendar) -->
-                        <div class="col-lg-4 mt-4 mt-lg-0">
-
-                            <style type="text/css">
-                                .slider {
-                                    margin: auto;
-                                    width: 80%;
-                                }
-
-                                .slick-slide {
-                                    margin: 0px;
-                                }
-
-                                .slick-slide img {
-                                    width: 100%;
-                                }
-
-                                .slick-prev:before,
-                                .slick-next:before {
-                                    color: #46CDCF !important;
-                                }
-
-                                .slick-slide {
-                                    transition: all ease-in-out .3s;
-                                    opacity: .2;
-                                }
-
-                                .slick-active {
-                                    opacity: .5;
-                                }
-
-                                .slick-current {
-                                    opacity: 1;
-                                }
-                            </style>
+                        <div class="col-lg-4 order-lg-last">
 
                             <!-- slick carousel -->
                             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -253,10 +198,7 @@
                             <div class="mycontainer">
                                 <h4 class="text-center">Today's Announcements</h4>
                                 <section class="regular slider autoplay" id="announcement_carousel">
-                                    <div class="border rounded" style="cursor: pointer;">
-                                        <img src="assets/images/admin.png" alt="">
-                                        <h5 class="text-center">Wifi Maintenance on 22April 7-9pm</h5>
-                                    </div>
+                                    <!-- carousel contents -->
                                 </section>
                                 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
                                 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -264,7 +206,7 @@
                             
                             <!-- Announcement Modal -->
                             <div class="modal fade" id="announcementPopupModal" tabindex="-1" aria-labelledby="announcementPopupModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
+                                <div class="modal-dialog modal-dialog-scrollable">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="announcementPopupModalLabel">Announcement</h5>
@@ -280,6 +222,30 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- POST Column -->
+                        <div class="col-lg-8 mt-4 mt-lg-0">
+                            <!--  submit post form -->
+                            <div class="mycontainer">
+                                <h2 class="text-center">Post Something...</h2>
+                                <form id="post-form">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="post-title" placeholder="Title">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <textarea class="form-control" id="post-content" placeholder="Your Post Content Here"></textarea>
+                                    </div>
+
+                                </form>
+                                <button class="btn btn_mygreen" onclick="submitPost()">Submit</button>
+                            </div>
+
+                            <!-- Post Container -->
+                            <div id="post_container"></div>
+
+                        </div>
+
+                        
 
                         <!-- Modal Template -->
                         <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="AddModalLabel" aria-hidden="true">
@@ -301,7 +267,7 @@
                             </div>
                         </div>
 
-
+                        <!-- Slick Slider JS -->
                         <script type="text/javascript">
                             $(document).on('ready', function () {
 
@@ -315,7 +281,6 @@
                                 });
 
                             });
-
                         </script>
 
 

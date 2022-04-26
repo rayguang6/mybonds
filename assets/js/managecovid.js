@@ -157,11 +157,11 @@ var reports =  [
                 </td>
                 <td>${resident.updated}</td>
                 <td>
-                    <button class="btn px-0" title="Update Covid" onclick="editStatus('${resident.unit}','${resident.name}','${resident.covid}','covid')">
-                        <i class="fa-solid fa-virus-covid text-danger fs-4"></i>
-                    </button>
                     <button class="btn px-0" title="Update Vaccine" onclick="editStatus('${resident.unit}','${resident.name}','${resident.vaccine}','vaccine')">
                         <i class="fa-solid fa-syringe text-primary fs-4"></i>
+                    </button>
+                    <button class="btn px-0" title="Update Covid" onclick="editStatus('${resident.unit}','${resident.name}','${resident.covid}','covid')">
+                        <i class="fa-solid fa-virus-covid text-danger fs-4"></i>
                     </button>
                    
                 </td>												
