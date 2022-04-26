@@ -234,22 +234,72 @@ Datatable Start (Manage Covid and User)
     cursor: pointer;
 }
 
-/* To Style the datatable pagination button */
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    background: #0d6efd !important;
-    color: white !important;
-    border:#0d6efd !important;
+/* all paginate button */
+.dataTables_wrapper .dataTables_paginate span .paginate_button {
+  font-weight: bold;
+  height: 50px;
+  width: 50px;
+  padding: 0;
+  margin-left: 0px;
+  margin: 0 2px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 1rem;
+  color: #0d6efd !important;
+  border: 0 !important;
+} 
+
+/* To Style the datatable pagination prev and next button*/
+.dataTables_wrapper .dataTables_paginate .paginate_button.previous, 
+.dataTables_wrapper .dataTables_paginate .paginate_button.next {
+  margin-left: 0px;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 2px;
+  border: 0 !important;
+  height: 50px;
+  width: 50px;
+  padding: 0;
+  border-radius: 1rem;
+  line-height: 54px;
+  display: inline-block;
+  color: #0d6efd !important;
 }
-.dataTables_wrapper .dataTables_paginate .paginate_button.current,.paginate_button:hover{
-    opacity: 0.9;
-    background: #0d6efd !important;
-    color: white !important;
-    border:#0d6efd !important;
+/* next previous */
+.dataTables_wrapper .dataTables_paginate .paginate_button.previous:hover, 
+.dataTables_wrapper .dataTables_paginate .paginate_button.next:hover{
+  background: #0d6efd !important;
+  color: #ffffff !important;
 }
 
+/* current button */
+.dataTables_wrapper .dataTables_paginate span .paginate_button.current{
+  color: #0d6efd !important;
+  background: #ffffff !important;
+} 
+.dataTables_wrapper .dataTables_paginate span .paginate_button.current:hover{
+  background: #0d6efd !important;
+  color: #ffffff !important;
+} 
 
 
+
+/* other paginate hover */
+.paginate_button:hover{
+    background: #0d6efd !important;
+    border:#0d6efd !important;
+    color: white !important;
+}
+
+/* outer */
+.dataTables_paginate {
+  border-radius: 1rem;
+  margin-top: 10px;
+  background: #F3F8FF;
+  padding: 5px 5px;
+}
 
 /********************
-Manage User End
+Datatable End
 ********************/
