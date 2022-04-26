@@ -184,6 +184,9 @@
                  *******************************************************************-->
 
 <div class="col-12 mycontainer mx-auto">
+    <div class="title d-flex align-items-center mb-2">
+        <h2>Resident Accounts</h2>
+    </div>
     <button type="button" class="btn btn-primary" onclick="addRow()"><i class="bi bi-plus-square"></i>  Register New Resident</button>
     
     <!-- User Table Start -->
@@ -209,7 +212,7 @@
 
 <div class="col-12 mycontainer mt-4">
     <div class="title d-flex align-items-center mb-2">
-        <h2>Pending Cancel Rental Request</h2>
+        <h2>Stop Rental Requests</h2>
     </div>
     <!-- Request Table Start -->
     <table class="table table-hover" id="RequestTable">
@@ -228,10 +231,29 @@
         </tbody>
     </table>
     <!-- Request Table End -->
-
 </div>
 
+<div class="col-12 mycontainer mt-4">
+    <div class="title d-flex align-items-center mb-2">
+        <h2>Upcoming Visitors</h2>
+    </div>
+    <!-- Visitor Table Start -->
+    <table class="table table-hover" id="VisitorTable">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Visitor Name</th>
+                <th scope="col">Visiting Unit</th>
+                <th scope="col">Car Plate</th>
+                <th scope="col">Visitor Contact</th>
+            </tr>
+        </thead>
+        <tbody id="VisitorTableBody">
 
+        </tbody>
+    </table>
+    <!-- Visitor Table End -->
+</div>
 
 <!-- Modal Template -->
 <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="AddModalLabel" aria-hidden="true">
