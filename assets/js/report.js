@@ -13,6 +13,7 @@ function buildReportForm() {
                 <option value="Pipe repairment">Pipe repairment</option>
                 <option value="Wiring repairment">Wiring repairment</option>
                 <option value="Maintenance">Maintenance</option>
+                <option value="Neighbourhood issue">Neighbourhood issue</option>
                 <option value="Others">Others</option>
             </select>
         </div>
@@ -29,16 +30,19 @@ function submitReportForm() {
     console.log("SUBMIT called")
 
     //building and showing modal
-    buildForm();
+    buildReportForm();
     $('#Modal').on('show.bs.modal', function () {
         $('#AddModalLabel').text('Report Problem: ');
     });
-
     $('#Modal').modal('show');
+
+    $('#Modal input[id="location"]').val("A-10-13")
+    $('#Modal input[id="location"]').prop("disabled",true)
 
     $("#form").submit(function (e) {
         alert("reported.")
         $("#form").trigger("reset");
+        $('#Modal').modal('hide');
         e.preventDefault();
     })
 }
