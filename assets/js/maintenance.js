@@ -26,7 +26,18 @@ var schedules = [
 // Complain list
 var complains = [
     { location: "A-01-13", name: "Booi Jia Min", contact: "012-1238472",  date: "2022-04-19T13:00", description: "Upstair always party at night, causing disturbance." },
-    { location: "D-03-12", name: "Adif", contact: "019-2693012", date: "2022-04-18T13:21", description: "My umbrella left in gym is stolen. I suspect the naughthy kids." }
+    { location: "D-03-12", name: "Adif", contact: "019-2693012", date: "2022-04-18T13:21", description: "My umbrella left in gym is stolen. I suspect the naughthy kids." },
+    { location: "A-02-13", name: "Ahmad Ali", contact: "012-2348472",  date: "2022-04-18T13:00", description: "Upstair always party at night, causing disturbance." },
+    { location: "D-04-12", name: "Chong Mun", contact: "019-2343012", date: "2022-04-20T13:21", description: "My umbrella left in gym is stolen. I suspect the naughthy kids." },
+    { location: "A-05-13", name: "Siti Sofia", contact: "012-3458472",  date: "2022-04-21T13:00", description: "Upstair always party at night, causing disturbance." },
+    { location: "D-06-12", name: "Lim Ming Ming", contact: "019-3453012", date: "2022-04-22T13:21", description: "My umbrella left in gym is stolen. I suspect the naughthy kids." },
+    { location: "A-07-13", name: "Abang Adam", contact: "012-4568472",  date: "2022-04-23T13:00", description: "Upstair always party at night, causing disturbance." },
+    { location: "D-08-12", name: "Kakak Fatimah", contact: "019-4563012", date: "2022-04-24T13:21", description: "My umbrella left in gym is stolen. I suspect the naughthy kids." },
+    { location: "A-09-13", name: "Vuringgam", contact: "012-1458472",  date: "2022-04-25T13:00", description: "Upstair always party at night, causing disturbance." },
+    { location: "D-10-12", name: "Mikasa", contact: "019-5673012", date: "2022-04-26T13:21", description: "My umbrella left in gym is stolen. I suspect the naughthy kids." },
+    { location: "B-01-13", name: "Levi", contact: "012-5678472",  date: "2022-04-27T13:00", description: "Upstair always party at night, causing disturbance." },
+    { location: "C-03-12", name: "Santa", contact: "019-26967812", date: "2022-04-27T13:21", description: "My umbrella left in gym is stolen. I suspect the naughthy kids." },
+    { location: "B-02-13", name: "Kim Soo Hyun", contact: "012-1267872",  date: "2022-04-19T13:00", description: "Upstair always party at night, causing disturbance." }
 ]
 
 function buildTable(tableID) {
