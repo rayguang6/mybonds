@@ -19,11 +19,12 @@ function buildReportForm() {
         </div>
         <div class="mb-3">
             <label for="description" class="col-form-label">Description: </label>
-            <textarea class="form-control" id="description" rows="3" cols="30"></textarea>
+            <textarea class="form-control" id="description" rows="3" cols="30" required></textarea>
         </div>
-        <input type="submit"  class="me-lg-3 btn btn-primary" id="submit">
+        <input type="submit"  class="me-lg-3 btn btn_mygreen" id="submit">
     </form> `
     $('#ModalBody').append(newBody)
+
 }
 
 function submitReportForm() {
@@ -40,9 +41,9 @@ function submitReportForm() {
     $('#Modal input[id="location"]').prop("disabled",true)
 
     $("#form").submit(function (e) {
-        alert("reported.")
         $("#form").trigger("reset");
         $('#Modal').modal('hide');
+        $('#alertModal').modal('show');
         e.preventDefault();
     })
 }
