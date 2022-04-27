@@ -1,5 +1,5 @@
 
-//call this function when window load
+/* call this function when window load */
 $(document).ready(function () {
     buildUserContent('#UserTableBody')
     buildRequestContent('#RequestTableBody')
@@ -22,15 +22,15 @@ var residents = [
 // Request Data List
 var requests = [{ unit: "B-01-03", debt: 1050, date: "27/04/2022"}, { unit: "A-01-09", debt: 0, date: "26/04/2022"}]
 
+// Vistor Data List
 var visitors = [{ date: "28/04/2022", name: "Mr Suddenly", unit: "D-01-09", car:"PNG3117", contact:"012-9876543"},
 { date: "28/04/2022", name: "Mr Handsome", unit: "A-01-10", car:"PNK3117", contact:"016-9123543"},
 { date: "29/04/2022", name: "Ms Beauty", unit: "C-10-10", car:"WAP3228", contact:"012-9877293"},]
 
-
+/* Build tables functions  */
 function buildTable(tableID) {
     //initialize datatable
     $(tableID).DataTable({
-        // "scrollX": "100%", 这个我用了我的table不align去 我改成下面这个就ok了
         "initComplete": function (settings, json) {
             $(tableID).wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
         },
@@ -124,6 +124,7 @@ function buildVisitorContent(tableBody) {
     }
 }
 
+/* Build modal functions */
 function buildModal() {
     $('#ModalBody').empty() //clear the html first
     newBody =
@@ -168,17 +169,57 @@ function buildModal() {
     $('#ModalBody').append(newBody)
 }
 
-function deleteUser(unit) {
-    if (confirm(`Delete User account with id: ${unit}?`)) {
-        deleteRow(unit, residents, '#UserTable')
+function buildAlert(action, unit, string) {
+    $('#alert-content').empty() 
+    $('#alert-footer').empty() 
+    if(action==="update"){ //update modal alert
+        newBody= `
+        <div class="modal-body d-flex flex-column align-items-center">
+            <div class="mx-auto">
+                <img src="https://cdn.dribbble.com/users/251873/screenshots/9289747/13540-sign-for-success-alert.gif"
+                    alt="success-image" width="200">
+            </div>
+            <div class="alert" role="alert">
+                Information updated!
+            </div>
+        </div>`
+
+        newFooter = `
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+        `
+    }else{ //delete modal alert
+        newBody= `
+        <div class="modal-body d-flex flex-column align-items-center">
+            <p> ${string} ${unit} ?</p>
+        </div>`
+
+        newFooter = `
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="confirm">OK</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        `
     }
+    $('#alert-content').append(newBody) 
+    $('#alert-footer').append(newFooter) 
+}
+
+/* CRUD functions  */
+function deleteUser(unit) {
+    event.stopPropagation();
+    buildAlert(null, unit, "Delete user account with id: ");
+    $('#alertModal').modal('show')
+    $('#confirm').click(function(){
+        deleteRow(unit, residents, '#UserTable');
+    });
 }
 
 function approveDeletion(unit) {
-    if (confirm(`Stop rental with : ${unit}?`)) {
-        deleteRow(unit, residents, '#UserTable')
-        deleteRow(unit, requests, '#RequestTable')
-    }
+    event.stopPropagation();
+    buildAlert(null, unit, "Stop rental with: ");
+    $('#alertModal').modal('show')
+    $('#confirm').click(function(){
+        deleteRow(unit, residents, '#UserTable');
+        deleteRow(unit, requests, '#RequestTable');
+    });
 }
 
 function deleteRow(unit, array, tableID) {
@@ -252,13 +293,14 @@ function updateResident(unit) {
     for (resident of residents) {
 
         if (resident.unit === unit) {
-            resident.name = name,
-                resident.IC = IC,
-                resident.gender = gender,
-                resident.contact = contact,
+            resident.name = name
+                resident.IC = IC
+                resident.gender = gender
+                resident.contact = contact
                 resident.emergency = emergency
                 resident.password = password
-                alert("Information updated!");
+                buildAlert("update",null,null)
+                $('#alertModal').modal('show')
 
             rebuildTable('#UserTable')
             rebuildTable('#RequestTable')
