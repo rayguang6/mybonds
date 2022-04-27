@@ -47,7 +47,7 @@ var posts=[
     
 
             
-
+ 
             for (post of posts.reverse()){
                     var card = `<div class="card mt-4 mycontainer">
                             <div class="card-body">
