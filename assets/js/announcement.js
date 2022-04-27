@@ -113,6 +113,7 @@ var announcements=[
                 time: new Date().toLocaleDateString('en-uk', { year:"numeric", month:"short", day:"numeric",hour:"numeric", minute:"numeric", hour12: true})
             }
             announcements.push(announcement)
+            showAlert('Success','Your announcement was posted successfully!','success')
         }
         $('#title').val('')
         $('#content').val('')
@@ -243,3 +244,12 @@ async function buildModalContent(content) {
     $('#announcementPopupModal .modal-body').empty()
     $('#announcementPopupModal .modal-body').append(content)
 }
+
+// Sweet Alert Success
+// function showAlert(title,messageBody,type){
+//     Swal.fire(
+//         title,
+//         messageBody,
+//         type
+//       )
+// }

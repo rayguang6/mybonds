@@ -1,5 +1,5 @@
 # bonds-frontend
-https://rayguang6.github.io/bonds-frontend/index.html
+https://rayguang6.github.io/bonds/index.html
 
 Start building at main content area (.main_content_container) at line 222
 The main content area is wrapped with contaiener and row already.
@@ -15,6 +15,4 @@ And if you have any cdn to add you can just add it and inform later
 
 And we haven't setup the github collab flow. So for the frontend we just code ourself and send to leader who will compile it later.
 
-After week 8, we might work on github and to develop a feature, pull from master branch and create a feature branch. After coding, commit it and make a pull request. 
- Hello testing testing
- 
+After week 8, we might work on github and to develop a feature, pull from master branch and create a feature branch. After coding, commit it and make a pull request.  

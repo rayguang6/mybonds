@@ -89,6 +89,7 @@ var posts=[
                     time: new Date().toLocaleDateString('en-uk', { year:"numeric", month:"short", day:"numeric",hour:"numeric", minute:"numeric", hour12: true})
                 }
                 posts.push(post)
+                showSweetToast('success','Submitted Post Successfully')
             }
             $('#post-title').val('')
             $('#post-content').val('')

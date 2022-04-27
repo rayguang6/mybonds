@@ -24,3 +24,32 @@ for(let i = 0; i< menuLength; i++){
         menuItem[i].className += " active";
     }
 }
+
+// sweet alert
+function showAlert(title,messageBody,type){
+    Swal.fire(
+        title,
+        messageBody,
+        type
+      )
+}
+
+// countdown toast
+function showSweetToast(icon,title){
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: icon,
+        title: title
+      })
+}
