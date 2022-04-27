@@ -1,30 +1,72 @@
-
-function changeProfileImage() {
-  document.getElementById("modals").style.display = "block";
+/* Building the modal content */
+function buildEditAlert() {
+  $('.alert').empty() 
+  newBody = `<p>Confirm Edit?</p>`
+  $('.alert').append(newBody)
 }
+
+function buildDeleteAlert() {
+  $('.alert').empty() 
+  newBody = `
+    <p>Are you sure you want to delete your account?</p>
+    <important style="color: red; font-size:10px;">⁕Once delete, you will have to request for account
+    activation from admin of Bonds!!</important><br>`
+  $('.alert').append(newBody)
+}
+
+function buildFooter(){
+  $('.modal-footer').empty()
+  newFooter=`
+    <button type="button" class="btn btn_mygreen" data-bs-dismiss="modal" id="yes-button" onclick="">Yes</button>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+  `
+  $('.modal-footer').append(newFooter)
+}
+
+function buildChangeImg() {
+  $('.alert').empty() 
+  newBody = `
+    <h5 class="message">Change Profile Picture?</h5>
+    <form id="formChangeProfile">
+      <input type="file" class="form-control" name="" id="" onchange="loadNewImage()" required />
+      <br>
+      <input type="submit"  class="me-lg-3 btn btn_mygreen" id="submit">
+    </form>
+  `
+  $('.alert').append(newBody)
+
+  $('.modal-footer').empty()
+  newFooter=`<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="buildFooter()">Cancel</button>`
+  $('.modal-footer').append(newFooter)
+}
+
+/* Changing Profile Image */
+function changeProfileImage() {
+  buildChangeImg();
+  $('#alert-modal').modal('show');
+
+  $("#formChangeProfile").submit(function (event) {
+    event.preventDefault();
+    confirmChange()
+    $("#Modal").modal('hide');
+  })
+}
+
 var tempImg = "";
 function loadNewImage() {
   tempImg = URL.createObjectURL(event.target.files[0]);
-  // image.src = URL.createObjectURL(event.target.files[0])
-}
-
-function cancelUpload(){
-    document.getElementById("modals").style.display = "none";
 }
 
 function confirmChange() {
   var image = document.getElementById("profile-image");
   image.src = tempImg;
-  document.getElementById("modals").style.display = "none";
+  $('#alert-modal').modal('hide');
+  buildFooter();
 }
 
-function closemodals() {
-  document.getElementById("modals").style.display = "none";
-}
-
+/* Edit information */
 function edit() {
   var allitem = document.getElementById("mainForm").querySelectorAll("input")
-  // var allitem = document.querySelectorAll("input");
   for (var i = 0; i < allitem.length; i++) {
     allitem[i].disabled = false;
   }
@@ -34,13 +76,14 @@ function edit() {
   }
   document.getElementById("editBtn").style.display = "none";
   document.getElementById("editValidationBtn").innerHTML =
-    " <input type='submit' class='btn btn-primary w-25 mt-4' value='Confirm'/><button type='button' class='btn btn-danger w-25 mt-4' onclick='cancelEdit()' style='margin-left:3%;'>Cancel</button>";
-  document.getElementById("editSuggestion").innerHTML="<p style='color:red;'>⁕Edit the details inside the text box</p>"
+    " <input type='submit' class='btn btn_mygreen w-25 mt-4' value='Confirm'/><button type='button' class='btn btn-danger w-25 mt-4' onclick='cancelEdit()' style='margin-left:3%;'>Cancel</button>";
+  document.getElementById("editSuggestion").innerHTML = "<p style='color:red;'>⁕Edit the details inside the text box</p>"
 }
 
 function cancelEdit() {
   document.getElementById("editBtn").style.display = "";
   document.getElementById("editValidationBtn").innerHTML = "";
+  document.getElementById("editSuggestion").innerHTML = "";
 
   var allitem = document.getElementById("mainForm").querySelectorAll("input")
   for (var i = 0; i < allitem.length; i++) {
@@ -61,68 +104,41 @@ var confirmed = false;
 
 function confirmEdit() {
   if (!confirmed) {
-    document.getElementById("overlay").style.display = "block";
-    document.getElementById("confirmationDiv").style.display = "block";
-    document.body.style.overflow = "hidden"
+    buildEditAlert()
+    $('#alert-modal').modal('show');
+    $('#yes-button').attr('onClick', 'confirmed = true; document.getElementById("mainForm").submit();');
     return false;
   } else {
     return true;
   }
 }
 
-function editNo() {
-  document.getElementById("overlay").style.display = "none";
-  document.getElementById("confirmationDiv").style.display = "none";
-  document.body.style.overflow = "auto"
-}
-
+/* Deletion of Account */
 function confirmDelete() {
-  console.log("lol");
-  document.getElementById("overlayDelete").style.display = "block";
-  document.getElementById("deleteDiv").style.display = "block";
-  document.body.style.overflow = "hidden"
-
+  buildDeleteAlert()
+  $('#alert-modal').modal('show');
+  $('#yes-button').attr('onClick', 'deleteAccount();');
 }
 
 function deleteAccount() {
+  // further deletion of account in database
   console.log("delete");
-  document.getElementById("overlayDelete").style.display = "none";
-  document.getElementById("deleteDiv").style.display = "none";
-  document.body.style.overflow = "auto"
-
 }
 
-function deleteNo() {
-  document.getElementById("overlayDelete").style.display = "none";
-  document.getElementById("deleteDiv").style.display = "none";
-  document.body.style.overflow = "auto"
-}
-
+/* Toggle Sidebar */
 var initialTogglestate = true
-if(initialTogglestate){
+if (initialTogglestate) {
   document.getElementById("toggleSideButton").innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-compact-down' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z'/></svg>"
 }
 
-
-function toggleSide(){
+function toggleSide() {
   console.log("lol")
-  if(initialTogglestate){
+  if (initialTogglestate) {
     document.getElementById("profileSideBar").style.display = "none"
     document.getElementById("minimizeProfileSide").style.display = "flex"
   }
-  else{
-    document.getElementById("profileSideBar").style.display = "block"
+  else {
     document.getElementById("minimizeProfileSide").style.display = "none"
   }
   initialTogglestate = !initialTogglestate
 }
-
-// set size of container based on sidebar
-// $(window).resize(function() { setSizes(); });
-
-// function setSizes() {
-//     var sidebarWidth = $("#sidebar").width();
-//     $("#main_content").css({"margin-left":sidebarWidth});
-
-//     console.log('sidebar width: '+sidebarWidth);
-// }
