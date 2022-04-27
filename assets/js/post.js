@@ -51,7 +51,7 @@ var posts=[
             for (post of posts.reverse()){
                     var card = `<div class="card mt-4 mycontainer">
                             <div class="card-body">
-                                <h5><a href="/${post.resident}" class="text-decoration-none">${post.resident}</a></h5>
+                                <h5><a href="${post.resident}" class="text-decoration-none">${post.resident}</a></h5>
                                 <span class="text-muted">${post.time}</span>
                                 <img src="${post.image}" alt="" class="w-100 mt-2">
                                 <h5 class="mt-4">${post.title}</h5>
