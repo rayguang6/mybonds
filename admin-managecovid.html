@@ -257,10 +257,41 @@
         </table>
     </div>
 
-    <!-- ChatJS -->
+    <!-- covid status chartJS -->
     <div class="mycontainer mt-4">
-        <h2>Covid Cases</h2>
-        <canvas id="myChart" class="w-50 mx-auto" ></canvas>
+        <div class="row d-flex align-items-center">
+            <h1 class="text-center">Covid Cases</h1>
+            <ul class="nav nav-tabs d-flex align-items-start" id="exploreTab" role="tablist">
+           
+            <li class="" role="presentation">
+                <button class="nav-link active fw-bold" id="inside-tab" data-bs-toggle="tab" data-bs-target="#inside-tab-content" type="button" role="tab" aria-controls="inside-tab-content" aria-selected="true">Weekly Cases</button>
+            </li>
+            <li class="mb-auto" role="presentation">
+                <button class="nav-link fw-bold" id="outside-tab" data-bs-toggle="tab" data-bs-target="#outside-tab-content" type="button" role="tab" aria-controls="outside-tab-content" aria-selected="false">Monthly Cases</button>
+            </li>
+           
+            </ul>
+            <div class="tab-content" id="myTabContent">
+
+                <!-- First Tab Start-->
+                <div class="tab-pane fade show active" id="inside-tab-content" role="tabpanel" aria-labelledby="inside-tab">
+                    <h2>Weekly Cases</h2>
+                    <canvas id="myChart" class="w-50 mx-auto" ></canvas>
+                </div>
+                <!-- First Tab End -->
+
+                <!-- Second Tab Start -->
+                <div class="tab-pane fade" id="outside-tab-content" role="tabpanel" aria-labelledby="outside-tab"> 
+                    <div>
+                        <h2>Monthly Cases</h2>
+                        <canvas id="monthlyCasesChart" class="w-75 mx-auto" ></canvas>
+                    </div>
+                </div>
+                <!-- Second Tab End -->
+            </div>
+
+
+        </div>
     </div>
 
 
