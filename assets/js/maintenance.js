@@ -1,5 +1,5 @@
 
-//call this function when window load
+/* call this function when window load */
 $(document).ready(function () {
     buildMaintenanceContent('#MaintenanceTableBody')
     buildRequestContent('#RequestTableBody')
@@ -10,20 +10,20 @@ $(document).ready(function () {
     buildTable('#ComplainTable')
 })
 
-// Resident Request Data List
+/* Requests array */
 var requests = [
     { location: "A-11-11", name: "Loh", contact: "012-4358723",  date: "2022-04-19T13:00", details: "Wiring repairment", description: "weird sounds when turning on lights" },
     { location: "D-10-09", name: "Loo Ming Ming", contact: "018-4379713", date: "2022-04-18T13:21", details: "Pipe repairment", description: "leakage of water in kitchen" },
 ]
 
-// Schedule Data List
+/* Schedules array */
 var schedules = [
     { location: "A-03-S1", type: "facility", company: "Jojo Sdn Bhd", contact: "016-2394546", date: "2022-04-27T13:00", details: "Maintenance", description: "swimming pool monthly cleaning", status: "ongoing" },
     { location: "A-03-G1", type: "facility", company: "Koi Sdn Bhd", contact: "04-9327546", date: "2022-04-27T13:00", details: "Maintenance", description: "gym facilities maintenance", status: "ongoing" },
     { location: "B-03-G2", type: "facility", company: "Koi Sdn Bhd", contact: "04-9327546", date: "2022-04-29T13:00", details: "Maintenance", description: "gym facilities maintenance", status: "reserved" }
 ]
 
-// Complain list
+/* Complaints array */
 var complains = [
     { location: "A-01-13", name: "Booi Jia Min", contact: "012-1238472",  date: "2022-04-19T13:00", description: "Upstair always party at night, causing disturbance." },
     { location: "D-03-12", name: "Adif", contact: "019-2693012", date: "2022-04-18T13:21", description: "My umbrella left in gym is stolen. I suspect the naughthy kids." },
@@ -40,6 +40,7 @@ var complains = [
     { location: "B-02-13", name: "Kim Soo Hyun", contact: "012-1267872",  date: "2022-04-19T13:00", description: "Upstair always party at night, causing disturbance." }
 ]
 
+/* Building table functions */
 function buildTable(tableID) {
     //initialize datatable
     $(tableID).DataTable({
@@ -151,6 +152,7 @@ function buildComplainContent(tableBody) {
     }
 }
 
+/* Building modal functions */
 function buildModal() {
     console.log("building modal...")
     $('#ModalBody').empty() //clear the html first
@@ -248,6 +250,40 @@ function viewComplain(unit){
     }
 }
 
+function buildAlert(action, unit, string) {
+    $('#alert-content').empty() 
+    $('#alert-footer').empty() 
+    if(action==="update"){ //update modal alert
+        newBody= `
+        <div class="modal-body d-flex flex-column align-items-center">
+            <div class="mx-auto">
+                <img src="https://cdn.dribbble.com/users/251873/screenshots/9289747/13540-sign-for-success-alert.gif"
+                    alt="success-image" width="200">
+            </div>
+            <div class="alert" role="alert">
+                Schedule updated!
+            </div>
+        </div>`
+
+        newFooter = `
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+        `
+    }else{ //delete modal alert
+        newBody= `
+        <div class="modal-body d-flex flex-column align-items-center">
+            <p> ${string} ${unit} ?</p>
+        </div>`
+
+        newFooter = `
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="confirm">OK</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        `
+    }
+    $('#alert-content').append(newBody) 
+    $('#alert-footer').append(newFooter) 
+}   
+
+/* Initialize modal form  */
 function editRowDisplay(location, arrays) {
     console.log(arrays)
     for (array of arrays) {
@@ -273,6 +309,7 @@ function editRowDisplay(location, arrays) {
     }
 }
 
+/* CRUD functions : update, delete, add */
 function editRow(location) {
     event.stopPropagation();
 
@@ -309,7 +346,8 @@ function updateResident(location) {
             schedule.contact = contact,
             schedule.status = status
 
-            alert("updated!");
+            buildAlert("update",null,null)
+            $('#alertModal').modal('show')
 
             rebuildTable('#MaintenanceTable')
         }
@@ -322,7 +360,7 @@ function addSchedule() {
     //building and showing modal
     buildModal();
     $('#Modal').on('show.bs.modal', function () {
-        $('#AddModalLabel').text('Add New Facility Work: : ');
+        $('#AddModalLabel').text('Add New Facility Work:');
     });
 
     $('#Modal').modal('show');
@@ -335,23 +373,29 @@ function addSchedule() {
 
 function settleComplain(location){
     event.stopPropagation();
-    if (confirm(`Settle complaints for : ${location}?`)) {
+    buildAlert(null,location,"Settle complaints for :")
+    $('#alertModal').modal('show')
+    $('#confirm').click(function(){
         deleteRow(location, complains, '#ComplainTable')
-    }
+    });
 }
 
 function deleteSchedule(location) {
     event.stopPropagation();
-    if (confirm(`Cancel schedule for : ${location}?`)) {
+    buildAlert(null,location,"Cancel schedule for :")
+    $('#alertModal').modal('show')
+    $('#confirm').click(function(){
         deleteRow(location, schedules, '#MaintenanceTable')
-    }
+    });
 }
 
 function rejectRequest(location) {
     event.stopPropagation();
-    if (confirm(`Reject request for : ${location}?`)) {
+    buildAlert(null,location,"Reject request for :")
+    $('#alertModal').modal('show')
+    $('#confirm').click(function(){
         deleteRow(location, requests, '#RequestTable')
-    }
+    });
 }
 
 function approveRequest(location) {
@@ -394,11 +438,11 @@ function addRow() {
         var newSchedule = {}
 
         var location = $('#Modal input[id="location"]').val()
-        var type = $('#Modal select[id="type"]').val() //?
+        var type = $('#Modal select[id="type"]').val() 
         var company = $('#Modal input[id="company"]').val()
         var contact = $('#Modal input[id="contact"]').val()
-        var details = $('#details').val() //?
-        var description = $('#Modal textarea[id="description"]').val(); //?
+        var details = $('#details').val() 
+        var description = $('#Modal textarea[id="description"]').val(); 
         var status = $('#Modal select[id="status"]').val();
         var date = $('#Modal input[id="date-scheduled"]').val()
 
