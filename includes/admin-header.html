@@ -29,15 +29,15 @@
             <div class="col-auto col-md-3 col-lg-3 col-xl-2 px-sm-2 py-4 pe-4 bg-white" id="sidebar">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     <!-- Logo Area -->
-                    <a id="logo" href="admin-dashboard.html" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none">
+                    <a class="mx-auto" id="logo" href="admin-dashboard.html" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none">
                         <span class="fs-5 d-none d-sm-inline"><img src="assets/images/admin.png" alt="Bonds Logo" width="150"></span>
                         <span class="fs-5 d-sm-none"><img src="assets/images/admin-favicon.png" alt="Bonds Logo" width="30"></span>
                     </a>
             
                     <!-- Menu Start -->
-                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mt-4" id="menu">
+                    <ul class="mx-auto nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mt-4" id="menu">
                         <li class="nav-item mt-2">
-                            <a href="admin-dashboard.html" class="nav-link menu_a">
+                            <a href="admin-dashboard.html" class="nav-link  menu_a">
                                 <i class="fs-5 bi bi-house"></i> <span class="fs-6 ms-1 d-none d-sm-inline">Dashboard</span>
                             </a>
                         </li>
@@ -56,7 +56,7 @@
             
                         <li class="nav-item mt-2">
                             <a href="admin-maintenance.html" class="nav-link menu_a">
-                                <i class="fs-5 bi bi-compass"></i><span class="fs-6 ms-1 d-none d-sm-inline">Maintenance</span>
+                                <i class="fs-5 bi bi-wrench-adjustable-circle"></i><span class="fs-6 ms-1 d-none d-sm-inline">Issues</span>
                             </a>
                         </li>
 
@@ -122,8 +122,13 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <span class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <form class="d-flex ms-auto me-auto p-0">
+                                <input class="form-control border-0 rounded-0 rounded-start" type="search" placeholder="Search" aria-label="Search" id="top_searchbar">
+                                <button class="btn btn-outline-none bg-white rounded-0 rounded-end w-md-25" type="submit"><i class="bi bi-search fs-5"></i></button>
+                            </form>
+
                             <ul class="navbar-nav ms-auto me-3">
-                                
+                                    
                                 <!-- chat icon -->
                                 <li class="nav-item dropdown">
                   
@@ -163,7 +168,7 @@
                                 </li>
                                 
                             </ul>      
-                            <button label="Get Suppport" class="me-lg-3 btn btn_mygreen"><i class="bi bi-question-circle me-1"></i>Get Help</button>
+                            <button label="Get Suppport" class="me-lg-3 btn btn_mygreen"><i class="bi bi-question-circle me-1"></i>Help Requests</button>
                             
                   </span>
                       </div>
