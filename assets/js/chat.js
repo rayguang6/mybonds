@@ -103,7 +103,7 @@ function sendChat(){
         senderId: currentSession,
         receiverId:"admin",
         message:message,
-        time:new Date().toLocaleDateString('en-uk', { month:"short", day:"numeric",hour:"numeric", minute:"numeric"})
+        time:new Date().toLocaleDateString('en-uk', { year:"numeric", month:"short", day:"numeric",hour:"numeric", minute:"numeric", hour12: true})
 
         }
         chats.push(chat)
